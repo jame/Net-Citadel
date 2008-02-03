@@ -38,7 +38,7 @@ a web interface, or - if you have to automate things - with a protocol
 
    http://www.citadel.org/doku.php/documentation:appproto:start
 
-This package tries to do a bit of abstraction (more could be) and handles some of the protocol
+This package tries to do a bit of abstraction (more could be done) and handles some of the protocol
 handling.  The basic idea is that the application using the package deals with Citadel's objects:
 rooms, floors, users.
 
@@ -74,15 +74,15 @@ use constant {
 =head2 Constructor
 
 The constructor creates a handle to the citadel server (and creates the TCP connection). It expects
-the folloing named parameters:
+the following named parameters:
 
 =over
 
-=item I<host> (C<localhost>)
+=item I<host> (default: C<localhost>)
 
 The hostname (or IP address) where the citadel server is running on. Defaults to C<localhost>.
 
-=item I<port> (C<CITADEL_PORT>)
+=item I<port> (default: C<CITADEL_PORT>)
 
 The port there.
 
@@ -196,7 +196,7 @@ sub floors {
 
 I<$c>->assert_floor (I<$floor_name>)
 
-Creates the floor with the name provided, or if it exists already simply returns. This only dies if
+Creates the floor with the name provided, or if it already exists simply returns. This only dies if
 there are insufficient privileges.
 
 =cut
@@ -521,17 +521,21 @@ sub time {
 
 =back
 
+=head1 TODOs
+
+- Decent GUI using Mason + AJAX
+
 =head1 SEE ALSO
 
    http://www.citadel.org/doku.php/documentation:appproto:app_proto
 
 =head1 AUTHOR
 
-Robert Barta, E<lt>rho@cpan.orgE<gt>
+Robert Barta, E<lt>drrho@cpan.orgE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 2007 by Robert Barta
+Copyright (C) 200[78] by Robert Barta
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.8 or,
@@ -540,7 +544,7 @@ at your option, any later version of Perl 5 you may have available.
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 1;
 

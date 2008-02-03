@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::Citadel.
 
+0.02  So 3. Feb 10:56:28 CET 2008
+	- some typos fixes
+
 0.01  Mon Oct  1 09:07:58 2007
 	- first, very rough cut to get something working
 
