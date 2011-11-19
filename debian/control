@@ -1,7 +1,7 @@
 Source: libnet-citadel-perl
 Section: perl
 Priority: optional
-Build-Depends: debhelper (>= 7)
+Build-Depends: debhelper (>= 8)
 Build-Depends-Indep: perl
 Maintainer: Robert James Clay <jame@rocasa.us>
 Standards-Version: 3.9.1
