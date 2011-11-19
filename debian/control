@@ -4,7 +4,7 @@ Priority: optional
 Build-Depends: debhelper (>= 8)
 Build-Depends-Indep: perl
 Maintainer: Robert James Clay <jame@rocasa.us>
-Standards-Version: 3.9.1
+Standards-Version: 3.9.2
 Vcs-Git: git://github.com/jame/Net-Citadel.git
 Vcs-Browser: http://github.com/jame/Net-Citadel
 Homepage: http://search.cpan.org/dist/Net-Citadel/
