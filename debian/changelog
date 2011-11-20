@@ -1,5 +1,10 @@
-libnet-citadel-perl (0.02-1~1) UNRELEASED; urgency=low
+libnet-citadel-perl (0.02-1) UNRELEASED; urgency=low
 
-  * Initial Release.
+  TODO:
+  - Submit ITP & add ITP number to debian/changelog.
+  - Add a patch to correct CPAN bug # 71743 until such time that upstream
+    corrects it.
 
- -- Robert James Clay <jame@rocasa.us>  Sun, 2 Oct 2011 03:17:25 -0400
+  * Initial Release. (Closes # ?)
+
+ -- Robert James Clay <jame@rocasa.us>  Sat, 19 Nov 2011 19:38:58 -0500

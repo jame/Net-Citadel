@@ -1,12 +1,13 @@
 Source: libnet-citadel-perl
 Section: perl
 Priority: optional
-Build-Depends: debhelper (>= 7)
+Maintainer: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
+Uploaders: Robert James Clay <jame@rocasa.us>
+Build-Depends: debhelper (>= 8)
 Build-Depends-Indep: perl
-Maintainer: Robert James Clay <jame@rocasa.us>
-Standards-Version: 3.9.1
-Vcs-Git: git://github.com/jame/Net-Citadel.git
-Vcs-Browser: http://github.com/jame/Net-Citadel
+Standards-Version: 3.9.2
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-perl/packages/libnet-citadel-perl.git
+Vcs-Git: git://git.debian.org/pkg-perl/packages/libnet-citadel-perl.git
 Homepage: http://search.cpan.org/dist/Net-Citadel/
 
 Package: libnet-citadel-perl
