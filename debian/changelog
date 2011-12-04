@@ -1,9 +1,5 @@
-libnet-citadel-perl (0.02-1) UNRELEASED; urgency=low
+libnet-citadel-perl (0.02-1) unstable; urgency=low
 
-  TODO:
-  - Add a patch to correct CPAN bug # 71743 until such time that upstream
-    corrects it.
+  * Initial Release. (Closes: #649410)
 
-  * Initial Release. (Closes #649410)
-
- -- Robert James Clay <jame@rocasa.us>  Sun, 20 Nov 2011 14:35:59 -0500
+ -- Robert James Clay <jame@rocasa.us>  Sun, 04 Dec 2011 18:13:50 -0500
