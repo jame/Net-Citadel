@@ -1,0 +1,17 @@
+Description: Correct documentation issue for $c->echo function
+ The description of the $c->echo function in v0.02 of Net::Citadel does not
+ include that it requires a string parameter. This patch corrects that.
+Bug: https://rt.cpan.org/Ticket/Display.html?id=71743
+Author: Robert James Clay <jame@rocasas.us>
+
+--- a/lib/Net/Citadel.pm
++++ b/lib/Net/Citadel.pm
+@@ -482,7 +482,7 @@
+ 
+ =item I<echo>
+ 
+-I<$c>->echo
++I<$c>->echo (I<$string>)
+ 
+ Tests the connection.
+ 
