@@ -1,4 +1,23 @@
-libnet-citadel-perl (0.02-1) unstable; urgency=low
+libnet-citadel-perl (0.02-1) UNRELEASED; urgency=low
+
+  TODO:
+  [as a general note, the package looks very good, this is just nitpicking on
+  minor details]
+  - I'd remove debian/libnet-citadel-perl.docs, the README is not really
+    helpful for users and we usual don't install those boilerplate READMEs
+  - d/control:
+    + libconfig-yaml-perl doesn't need a version, even oldstable has the
+      required one
+    + please mention the module name somewhere in the long description,
+      eg. s|This package|Net::Citadel| (makes searching easier)
+  - d/copyright:
+    + we usually do s|Debian GNU/Linux|Debian|, since there's also a freebsd
+      kernel nowadays
+    + the comment under "Artistic or GPL-1+" for Files:* is not necessary (but
+      it's of course not wrong)
+  - .gitignore: not sure if this is a good idea, 1) it might clash with a
+    potential future upstream .gitignore, and 2) it might hide problems
+    (leftovers after builds)
 
   * Initial Release. (Closes: #649410)
 
