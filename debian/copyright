@@ -6,9 +6,6 @@ Name: Net-Citadel
 Files: *
 Copyright: 2007-2008, Robert Barta, <drrho@cpan.org>
 License: Artistic or GPL-1+
- This library is free software; you can redistribute it and/or modify
- it under the same terms as Perl itself, either Perl version 5.8.8 or,
- at your option, any later version of Perl 5 you may have available.
 
 Files: debian/*
 Copyright: 2011, Robert James Clay <jame@rocasa.us>
