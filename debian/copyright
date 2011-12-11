@@ -6,9 +6,6 @@ Name: Net-Citadel
 Files: *
 Copyright: 2007-2008, Robert Barta, <drrho@cpan.org>
 License: Artistic or GPL-1+
- This library is free software; you can redistribute it and/or modify
- it under the same terms as Perl itself, either Perl version 5.8.8 or,
- at your option, any later version of Perl 5 you may have available.
 
 Files: debian/*
 Copyright: 2011, Robert James Clay <jame@rocasa.us>
@@ -18,8 +15,8 @@ License: Artistic
  This program is free software; you can redistribute it and/or modify
  it under the terms of the Artistic License, which comes with Perl.
  .
- On Debian GNU/Linux systems, the complete text of the Artistic License
- can be found in `/usr/share/common-licenses/Artistic'.
+ On Debian systems, the complete text of the Artistic License can be found
+ in `/usr/share/common-licenses/Artistic'.
 
 License: GPL-1+
  This program is free software; you can redistribute it and/or modify
@@ -27,5 +24,5 @@ License: GPL-1+
  the Free Software Foundation; either version 1, or (at your option)
  any later version.
  .
- On Debian GNU/Linux systems, the complete text of version 1 of the
- General Public License can be found in `/usr/share/common-licenses/GPL-1'.
+ On Debian systems, the complete text of version 1 of the General Public
+ License can be found in `/usr/share/common-licenses/GPL-1'.
