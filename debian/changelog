@@ -1,3 +1,17 @@
+libnet-citadel-perl (0.02-2) UNRELEASED; urgency=low
+
+  TODO:
+  - debian/copyright:
+    + "Format-Specification" is now standardized; update it.
+    + Update "Maintainer" to be myself when packaging next upstream.
+    + Add myself to 'Files: *' copyright when packaging next upstream.
+    + Add 2012 to my 'Files: debian/*' copyright.
+  - debian/control:
+    + Update Standards-Version to current (3.9.3?).
+  - Update for new upstream when that is available.
+    + Since that should include a fix for the doc patch;  remove that.
+ -- Robert James Clay <jame@rocasa.us>  Sat, 08 Sep 2012 17:23:35 -0400
+
 libnet-citadel-perl (0.02-1) unstable; urgency=low
 
   * Initial Release. (Closes: #649410)
