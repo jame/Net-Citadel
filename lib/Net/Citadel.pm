@@ -6,6 +6,8 @@ use warnings;
 require Exporter;
 use base qw(Exporter);
 
+use Carp qw( croak );
+
 use IO::Socket;
 use Data::Dumper;
 
