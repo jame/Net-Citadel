@@ -1,7 +1,8 @@
 Revision history for Perl extension Net::Citadel.
 
-0.04    13:11 12 September 2012
-  - Start development for v0.04.
+0.04    13:36 12 September 2012
+  - Use the Carp module in the lib/Net/Citadel.pm file.
+  - Use 'croak' instead of 'die' in the lib/Net/Citadel.pm file.
 
 0.03    12:46 12 September 2012
   - As the new maintainer; add Robert James Clay to the COPYRIGHT AND LICENSE
