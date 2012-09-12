@@ -1,13 +1,12 @@
 Revision history for Perl extension Net::Citadel.
 
-0.03    11:00 12 September 2012
-    - Start development for v0.03
+0.03    12:46 12 September 2012
+  - As the new maintainer; add Robert James Clay to the COPYRIGHT AND LICENSE
+    section in the README file and to the AUTHORS and COPYRIGHT AND LICENSE
+    sections in Citadel.pm.
 
 0.02  So 3. Feb 10:56:28 CET 2008
-	- some typos fixes
+  - some typos fixes
 
 0.01  Mon Oct  1 09:07:58 2007
-	- first, very rough cut to get something working
-
-
-
+  - first, very rough cut to get something working
