@@ -529,13 +529,15 @@ sub time {
 
    http://www.citadel.org/doku.php/documentation:appproto:app_proto
 
-=head1 AUTHOR
+=head1 AUTHORS
 
 Robert Barta, E<lt>drrho@cpan.orgE<gt>
+Robert James Clay, E<lt>jame@rocasa.usE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
 Copyright (C) 200[78] by Robert Barta
+Copyright (C) 2012 by Robert James Clay
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.8 or,
@@ -544,7 +546,7 @@ at your option, any later version of Perl 5 you may have available.
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 1;
 
