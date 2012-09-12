@@ -90,7 +90,7 @@ The port there.
 
 =back
 
-The constructor will die if no connection can be established.
+The constructor will croak if no connection can be established.
 
 =cut
 
@@ -103,7 +103,7 @@ sub new {
     $self->{socket} = IO::Socket::INET->new (PeerAddr => $self->{host},
 					     PeerPort => $self->{port},
 					     Proto    => 'tcp',
-					     Type     => SOCK_STREAM) or die "cannot connect to $self->{host}:$self->{port} ($@)";
+					     Type     => SOCK_STREAM) or croak "cannot connect to $self->{host}:$self->{port} ($@)";
     my $s = $self->{socket}; <$s>; # consume banner
     return $self;
 }
@@ -120,7 +120,7 @@ sub new {
 
 I<$c>->login (I<$user>, I<$pwd>)
 
-Logs in this user, or will die if that fails.
+Logs in this user, or will croak if that fails.
 
 =cut
 
@@ -131,10 +131,10 @@ sub login {
     my $s    = $self->{socket};
 
     print $s "USER $user\n";
-    <$s> =~ /(\d).. (.*)/ and ($1 == 3 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 3 or croak $2);
 
     print $s "PASS $pwd\n";
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 }
 
 =pod
@@ -152,7 +152,7 @@ sub logout {
     my $s    = $self->{socket};
 
     print $s "LOUT\n";
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 }
 
 =pod
@@ -177,7 +177,7 @@ sub floors {
     my $s    = $self->{socket};
 
     print $s "LFLR\n";
-    <$s> =~ /(\d).. (.*)/ and ($1 == 1 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 1 or croak $2);
 
     my @floors;
     while (($_ = <$s>) !~ /^000/) {
@@ -198,7 +198,7 @@ sub floors {
 
 I<$c>->assert_floor (I<$floor_name>)
 
-Creates the floor with the name provided, or if it already exists simply returns. This only dies if
+Creates the floor with the name provided, or if it already exists simply returns. This only croaks if
 there are insufficient privileges.
 
 =cut
@@ -209,7 +209,7 @@ sub assert_floor {
 
     my $s    = $self->{socket};
     print $s "CFLR $name|1\n";  # we really want to create it
-    <$s> =~ /(\d).. (.*)/ and ($1 == 1 or $1 == 2 or $2 =~ /already exists/ or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 1 or $1 == 2 or $2 =~ /already exists/ or croak $2);
 #CFLR XXX|1
 #550 This command requires Aide access.
 }
@@ -220,8 +220,8 @@ sub assert_floor {
 
 I<$c>->retract_floor (I<$floor_name>)
 
-Retracts a floor with this name. Dies if that fails because of insufficient privileges. Does
-not die if the floor did not exist.
+Retracts a floor with this name. croaks if that fails because of insufficient privileges. Does
+not croak if the floor did not exist.
 
 B<NOTE>: Citadel server (v7.20) seems to have the bug that you cannot
 delete an empty floor without restarting the server. Not much I can do
@@ -238,7 +238,7 @@ sub retract_floor {
 	if ($floors[$i]->{name} eq $name) {
 	    my $s    = $self->{socket};
 	    print $s "KFLR $i|1\n";  # we really want to delete it
-	    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or $2 =~ /not in use/ or die $2);
+	    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or $2 =~ /not in use/ or croak $2);
 	    return;
 	}
     }
@@ -262,11 +262,11 @@ sub rooms {
 
     my @floors  = $self->floors;
 #warn "looking for $name rooms ". Dumper \@floors;
-    my ($floor) = grep { $_->{name} eq $name } @floors or die "no floor '$name' known";
+    my ($floor) = grep { $_->{name} eq $name } @floors or croak "no floor '$name' known";
 #warn "found floor: ".Dumper $floor;
 
     print $s "LKRA ".$floor->{id}."\n";
-    <$s> =~ /(\d).. (.*)/ and ($1 == 1 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 1 or croak $2);
     my @rooms;
     while (($_ = <$s>) !~ /^000/) {
 #warn "processing $_";
@@ -320,7 +320,7 @@ sub assert_room {
     my $self    = shift;
     my $fname   = shift;
     my @floors  = $self->floors;
-    my ($floor) = grep { $_->{name} eq $fname } @floors or die "no floor '$fname' known";
+    my ($floor) = grep { $_->{name} eq $fname } @floors or croak "no floor '$fname' known";
 
     my $name  = shift;
     my $attrs = shift;
@@ -337,7 +337,7 @@ sub assert_room {
 		   '|'.   # no idea what this is
 		   $attrs->{default_view}.'|'.
 		   "\n";
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or $2 =~ /already exists/ or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or $2 =~ /already exists/ or croak $2);
 }
 
 #CRE8 1|Bumsti|0||0|||
@@ -359,11 +359,11 @@ sub retract_room {
     my $s    = $self->{socket};
     print $s "GOTO $name\n";
 #GOTO Bumsti
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 Lobby|0|0|0|2|0|0|0|1|0|0|0|0|0|0|
     print $s "KILL 1\n";
 #KILL 1
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 'Bumsti' deleted.
 }
 
@@ -391,7 +391,7 @@ sub create_user {
     my $s    = $self->{socket};
     print $s "CREU $name|$pwd\n";
 #CREU RobertBarta|xxx
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 User 'RobertBarta' created and password set.
 }
 
@@ -431,7 +431,7 @@ sub change_user {
 
     print $s "AGUP $name\n";
 #AGUP RobertBarta
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 RobertBarta|ggg|10768|1|0|4|4|1191255938|0
     my %user;
     my @attrs = ('name', 'password', 'flags', 'times_called', 'messages_posted', 'access_level', 'user_number', 'timestamp', 'purge_time');
@@ -441,7 +441,7 @@ sub change_user {
     $user{access_level} = $changes{access_level} if $changes{access_level};
 
     print $s "ASUP ".(join "|", @user{ @attrs })."\n";
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 }
 
 =pod
@@ -462,7 +462,7 @@ sub remove_user {
 
     print $s "AGUP $name\n";
 #AGUP RobertBarta
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 RobertBarta|ggg|10768|1|0|4|4|1191255938|0
     my %user;
     my @attrs = ('name', 'password', 'flags', 'times_called', 'messages_posted', 'access_level', 'user_number', 'timestamp', 'purge_time');
@@ -471,7 +471,7 @@ sub remove_user {
     $user{access_level} = DELETED_USER;
 
     print $s "ASUP ".(join "|", @user{ @attrs })."\n";
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 }
 
 =pod
@@ -496,7 +496,7 @@ sub echo {
     my $s    = $self->{socket};
 
     print $s "ECHO $msg\n";
-    die "message not echoed ($msg)" unless <$s> =~ /2.. $msg/;
+    croak "message not echoed ($msg)" unless <$s> =~ /2.. $msg/;
 }
 
 =pod
@@ -515,7 +515,7 @@ sub time {
     my $self = shift;
     my $s    = $self->{socket};
     print $s "TIME\n";
-    die "protocol: time failed" unless <$s> =~ /2.. (.*)\|(.*)\|(.*)/;  # not sure what the others are
+    croak "protocol: time failed" unless <$s> =~ /2.. (.*)\|(.*)\|(.*)/;  # not sure what the others are
     return $1;
 }
 
