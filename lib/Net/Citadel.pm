@@ -501,21 +501,21 @@ sub echo {
 
 =pod
 
-=item I<time>
+=item I<citadel_time>
 
-I<$t> = I<$c>->time
+I<$t> = I<$c>->citadel_time
 
-Gets the UNIX time from the server.
+Gets the current system time and time zone offset from UTC in UNIX timestamp format from the Citadel server.
 
-C<TODO>: timezone handling
+C<TODO>: Rewrite function to return the unpacked parameters as a hash upon success.
 
 =cut
 
-sub time {
+sub citadel_time {
     my $self = shift;
     my $s    = $self->{socket};
     print $s "TIME\n";
-    croak "protocol: time failed" unless <$s> =~ /2.. (.*)\|(.*)\|(.*)/;  # not sure what the others are
+    croak "protocol: citadel_time failed" unless <$s> =~ /2.. (.*)\|(.*)\|(.*)/;  # not sure what the others are
     return $1;
 }
 
@@ -548,7 +548,7 @@ at your option, any later version of Perl 5 you may have available.
 
 =cut
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 1;
 
