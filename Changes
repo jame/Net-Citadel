@@ -1,5 +1,10 @@
 Revision history for Perl extension Net::Citadel.
 
+0.05    08:53 14 September 2012
+  - Rename the 'time' function in Citadel.pm to 'citadel_time'.
+  - Rename the 'time' function call in t/01citadel.t to 'citadel_time'.
+  - Rewrite the POD documentation for the citadel_time function.
+
 0.04    13:36 12 September 2012
   - Use the Carp module in the lib/Net/Citadel.pm file.
   - Use 'croak' instead of 'die' in the lib/Net/Citadel.pm file.
