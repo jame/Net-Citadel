@@ -1,0 +1,28 @@
+Format-Specification: http://anonscm.debian.org/viewvc/dep/web/deps/dep5.mdwn?revision=135&view=markup
+Maintainer: Robert Barta, <drrho@cpan.org>
+Source: http://search.cpan.org/dist/Net-Citadel/
+Name: Net-Citadel
+
+Files: *
+Copyright: 2007-2008, Robert Barta, <drrho@cpan.org>
+License: Artistic or GPL-1+
+
+Files: debian/*
+Copyright: 2011, Robert James Clay <jame@rocasa.us>
+License: Artistic or GPL-1+
+
+License: Artistic
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the Artistic License, which comes with Perl.
+ .
+ On Debian systems, the complete text of the Artistic License can be found
+ in `/usr/share/common-licenses/Artistic'.
+
+License: GPL-1+
+ This program is free software; you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation; either version 1, or (at your option)
+ any later version.
+ .
+ On Debian systems, the complete text of version 1 of the General Public
+ License can be found in `/usr/share/common-licenses/GPL-1'.

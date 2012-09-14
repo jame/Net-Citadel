@@ -1,0 +1,5 @@
+libnet-citadel-perl (0.02-1) unstable; urgency=low
+
+  * Initial Release. (Closes: #649410)
+
+ -- Robert James Clay <jame@rocasa.us>  Sat, 10 Dec 2011 22:30:57 -0500
