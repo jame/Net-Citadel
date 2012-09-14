@@ -505,9 +505,9 @@ sub echo {
 
 I<$t> = I<$c>->citadel_time
 
-Gets the UNIX time from the server.
+Gets the current system time and time zone offset from UTC in UNIX timestamp format from the Citadel server.
 
-C<TODO>: timezone handling
+C<TODO>: Rewrite function to return the unpacked parameters as a hash upon success.
 
 =cut
 
