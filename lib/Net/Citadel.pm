@@ -11,6 +11,8 @@ use Carp qw( croak );
 use IO::Socket;
 use Data::Dumper;
 
+use Readonly;
+
 =pod
 
 =head1 NAME
@@ -48,9 +50,8 @@ rooms, floors, users.
 
 =cut
 
-use constant {
-    CITADEL_PORT => 504
-};
+Readonly our $CITADEL_PORT => 504;
+
 
 use constant {
     LISTING_FOLLOWS => 100,
