@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::Citadel.
 
+0.08    hh:mm 17 September 2012
+  - Start development for v0.08
+
 0.07    16:13 17 September 2012
   - Correct URLs for the Citadel Application API information in the JAM.pm file.
   - Move the VERSION code line in and add a VERSION POD documentation section
