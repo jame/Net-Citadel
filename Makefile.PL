@@ -3,17 +3,17 @@ use ExtUtils::MakeMaker;
 # See lib/ExtUtils/MakeMaker.pm for details of how to influence
 # the contents of the Makefile that is written.
 WriteMakefile(
-    NAME              => 'Net::Citadel',
-    VERSION_FROM      => 'lib/Net/Citadel.pm', # finds $VERSION
-    ABSTRACT_FROM     => 'lib/Net/Citadel.pm', # retrieve abstract from module
-    AUTHOR            => [ 'Robert Barta <rho@devc.at>', 'Robert James Clay <jame@rocasa.us>' ],
-    PREREQ_PM         => {
-           'Readonly' => '0',
+    NAME                => 'Net::Citadel',
+    VERSION_FROM        => 'lib/Net/Citadel.pm', # finds $VERSION
+    ABSTRACT_FROM       => 'lib/Net/Citadel.pm', # retrieve abstract from module
+    AUTHOR              => [ 'Robert Barta <rho@devc.at>', 'Robert James Clay <jame@rocasa.us>' ],
+    PREREQ_PM           => {
+       'Readonly'       => '0',
     },
-    BUILD_REQUIRES    => {
-       'Config::YAML' => '1.42',
-       'Test::More' => '0',
-       'Test::Pod' => '0',
+    BUILD_REQUIRES  => {
+       'Config::YAML'   => '1.42',
+       'Test::More'     => '0',
+       'Test::Pod'      => '0',
     },
     clean               => { FILES => 'Net-Citadel-*' },
 );
@@ -24,15 +24,15 @@ sub depend {
     return <<MAKE
 
 inject:
-	mcpani --add --module Net::Citadel --authorid DRRHO --modversion \$(VERSION) --file Net-Citadel-\$(VERSION).tar.gz
-	sudo mcpani --inject
+    mcpani --add --module Net::Citadel --authorid DRRHO --modversion \$(VERSION) --file Net-Citadel-\$(VERSION).tar.gz
+    sudo mcpani --inject
 
 debian:
-	(cd /usr/local/share/packages; rm -rf Net-Cita* ; dh-make-perl --cpan-mirror file:/usr/local/share/minicpan --build --cpan Net::Citadel --notest)
+    (cd /usr/local/share/packages; rm -rf Net-Cita* ; dh-make-perl --cpan-mirror file:/usr/local/share/minicpan --build --cpan Net::Citadel --notest)
 
 
 upload:
-	cpan-upload-http Net-Citadel-\$(VERSION).tar.gz
+    cpan-upload-http Net-Citadel-\$(VERSION).tar.gz
 
 MAKE
 }
