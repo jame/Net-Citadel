@@ -85,7 +85,7 @@ the following named parameters:
 
 The hostname (or IP address) where the citadel server is running on. Defaults to C<localhost>.
 
-=item I<port> (default: C<CITADEL_PORT>)
+=item I<port> (default: C<$CITADEL_PORT>)
 
 The port there.
 
@@ -99,7 +99,7 @@ sub new {
     my $class = shift;
     my $self = bless { @_ }, $class;
     $self->{host} ||= 'localhost';
-    $self->{port} ||= CITADEL_PORT;
+    $self->{port} ||= $CITADEL_PORT;
     use IO::Socket::INET;
     $self->{socket} = IO::Socket::INET->new (PeerAddr => $self->{host},
 					     PeerPort => $self->{port},
