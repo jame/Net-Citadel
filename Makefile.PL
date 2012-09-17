@@ -6,7 +6,8 @@ WriteMakefile(
     NAME              => 'Net::Citadel',
     VERSION_FROM      => 'lib/Net/Citadel.pm', # finds $VERSION
     PREREQ_PM         => {
-	'Config::YAML' => '1.42',
+        'Readonly' => '0',
+        'Config::YAML' => '1.42',
     },
 
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
