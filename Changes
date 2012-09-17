@@ -1,5 +1,13 @@
 Revision history for Perl extension Net::Citadel.
 
+0.08    17:51 17 September 2012
+  Changes to Makefile.PL:
+  - Clean up of whitespace and tabs.
+  - Add the Readonly module to the PREREQ_PM section.
+  - Add a 'clean' configuration item to the Makefile.PL file.
+  - Move AUTHOR and ABSTRACT_FROM to earlier in the Makefile.PL file.
+  - Move Config::YAML plus add TEST::MORE and TEST::Pod to BUILD_REQUIRES.
+
 0.07    16:13 17 September 2012
   - Correct URLs for the Citadel Application API information in the JAM.pm file.
   - Move the VERSION code line in and add a VERSION POD documentation section
