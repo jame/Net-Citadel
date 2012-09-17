@@ -19,6 +19,14 @@ use Readonly;
 
 Net::Citadel - Citadel.org protocol coverage
 
+=head1 VERSION
+
+Version 0.07
+
+=cut
+
+our $VERSION = '0.07';
+
 =head1 SYNOPSIS
 
   use Net::Citadel;
@@ -40,7 +48,7 @@ Citadel is a "turnkey open-source solution for email and collaboration" (this is
 can go :-). The main component is the I<citadel server>. To communicate with it you can use either
 a web interface, or - if you have to automate things - with a protocol
 
-   http://www.citadel.org/doku.php/documentation:appproto:start
+   L<http://www.citadel.org/doku.php?id=documentation:appproto:start>
 
 This package tries to do a bit of abstraction (more could be done) and handles some of the protocol
 handling.  The basic idea is that the application using the package deals with Citadel's objects:
@@ -541,7 +549,7 @@ sub citadel_time {
 
 =head1 SEE ALSO
 
-   http://www.citadel.org/doku.php/documentation:appproto:app_proto
+   L<http://www.citadel.org/doku.php?id=documentation:appproto:app_proto>
 
 =head1 AUTHORS
 
@@ -560,7 +568,6 @@ at your option, any later version of Perl 5 you may have available.
 
 =cut
 
-our $VERSION = '0.06';
 
 1;
 
