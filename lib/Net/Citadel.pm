@@ -19,6 +19,10 @@ use Readonly;
 
 Net::Citadel - Citadel.org protocol coverage
 
+=head1 VERSION
+
+Version 0.07
+
 =cut
 
 our $VERSION = '0.07';
