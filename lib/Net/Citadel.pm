@@ -560,7 +560,7 @@ at your option, any later version of Perl 5 you may have available.
 
 =cut
 
-our $VERSION = '0.06';
+our $VERSION = '0.07';
 
 1;
 

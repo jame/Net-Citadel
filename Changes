@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::Citadel.
 
+0.07    15:16 17 September 2012
+  - development for 0.07
+
 0.06    13:34 17 September 2012
   - Change to using Readonly for the constant CITADEL_PORT.
   - Update usage of the constant CITADEL_PORT to '$CITADEL_PORT'.
