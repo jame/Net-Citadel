@@ -46,12 +46,21 @@ This package tries to do a bit of abstraction (more could be done) and handles s
 handling.  The basic idea is that the application using the package deals with Citadel's objects:
 rooms, floors, users.
 
-=head1 INTERFACE
+=head1 CONSTANTS
+
+=head2 Configuration
+
+=over 4
+
+=item CITADEL_PORT
+
+The constant $CITADEL_PORT is equal to C<504>, which is the IANA standard Citadel port.
+
+=back
 
 =cut
 
 Readonly our $CITADEL_PORT => 504;
-
 
 use constant {
     LISTING_FOLLOWS => 100,
@@ -73,6 +82,8 @@ use constant {
     };
 
 =pod
+
+=head1 INTERFACE
 
 =head2 Constructor
 
