@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::Citadel.
 
+0.06    11:47 17 September 2012
+  - Start development for v0.06
+
 0.05    08:53 14 September 2012
   - Rename the 'time' function in Citadel.pm to 'citadel_time'.
   - Rename the 'time' function call in t/01citadel.t to 'citadel_time'.
