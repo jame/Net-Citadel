@@ -5,6 +5,7 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     NAME              => 'Net::Citadel',
     VERSION_FROM      => 'lib/Net/Citadel.pm', # finds $VERSION
+    ABSTRACT_FROM     => 'lib/Net/Citadel.pm', # retrieve abstract from module
     PREREQ_PM         => {
            'Readonly' => '0',
     },
@@ -15,7 +16,6 @@ WriteMakefile(
     },
 
     ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM  => 'lib/Net/Citadel.pm', # retrieve abstract from module
        AUTHOR         => 'Robert Barta <rho@devc.at>') : ()),
 );
 
