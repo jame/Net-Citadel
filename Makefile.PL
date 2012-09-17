@@ -15,6 +15,7 @@ WriteMakefile(
        'Test::More' => '0',
        'Test::Pod' => '0',
     },
+    clean               => { FILES => 'Net-Citadel-*' },
 );
 
 package MY;
