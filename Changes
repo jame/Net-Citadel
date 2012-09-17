@@ -1,5 +1,10 @@
 Revision history for Perl extension Net::Citadel.
 
+0.06    13:34 17 September 2012
+  - Change to using Readonly for the constant CITADEL_PORT.
+  - Update usage of the constant CITADEL_PORT to '$CITADEL_PORT'.
+  - Add POD documentation for the constant $CITADEL_PORT.
+
 0.05    08:53 14 September 2012
   - Rename the 'time' function in Citadel.pm to 'citadel_time'.
   - Rename the 'time' function call in t/01citadel.t to 'citadel_time'.

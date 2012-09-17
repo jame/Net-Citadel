@@ -11,6 +11,8 @@ use Carp qw( croak );
 use IO::Socket;
 use Data::Dumper;
 
+use Readonly;
+
 =pod
 
 =head1 NAME
@@ -44,13 +46,21 @@ This package tries to do a bit of abstraction (more could be done) and handles s
 handling.  The basic idea is that the application using the package deals with Citadel's objects:
 rooms, floors, users.
 
-=head1 INTERFACE
+=head1 CONSTANTS
+
+=head2 Configuration
+
+=over 4
+
+=item CITADEL_PORT
+
+The constant $CITADEL_PORT is equal to C<504>, which is the IANA standard Citadel port.
+
+=back
 
 =cut
 
-use constant {
-    CITADEL_PORT => 504
-};
+Readonly our $CITADEL_PORT => 504;
 
 use constant {
     LISTING_FOLLOWS => 100,
@@ -73,6 +83,8 @@ use constant {
 
 =pod
 
+=head1 INTERFACE
+
 =head2 Constructor
 
 The constructor creates a handle to the citadel server (and creates the TCP connection). It expects
@@ -84,7 +96,7 @@ the following named parameters:
 
 The hostname (or IP address) where the citadel server is running on. Defaults to C<localhost>.
 
-=item I<port> (default: C<CITADEL_PORT>)
+=item I<port> (default: C<$CITADEL_PORT>)
 
 The port there.
 
@@ -98,7 +110,7 @@ sub new {
     my $class = shift;
     my $self = bless { @_ }, $class;
     $self->{host} ||= 'localhost';
-    $self->{port} ||= CITADEL_PORT;
+    $self->{port} ||= $CITADEL_PORT;
     use IO::Socket::INET;
     $self->{socket} = IO::Socket::INET->new (PeerAddr => $self->{host},
 					     PeerPort => $self->{port},
@@ -548,7 +560,7 @@ at your option, any later version of Perl 5 you may have available.
 
 =cut
 
-our $VERSION = '0.05';
+our $VERSION = '0.06';
 
 1;
 
