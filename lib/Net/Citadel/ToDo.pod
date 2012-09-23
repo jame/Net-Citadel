@@ -4,20 +4,23 @@
 
 Net::Citadel::ToDo - To Do items for the Net::Citadel Perl extension.
 
+
 =head1 TODO
 
 =head2 General
 
 Add a function for the MRTG command, possibly as a separate module like
-C<Net::Citadel::MRTG> since is should be in the I<Net::Citadel> namespace
+C<Net::Citadel::MRTG> since it should be in the C<Net::Citadel> namespace
 but does not require a login and therefore does not need the C<new> 
 function in the main module.
 
-Add a function for the INFO command.
+Add a function for the INFO command, possibly as the function C<citadel_info>.
 
 Add a ZIPFLAGS configuration item for dist/zipdist in Makefile.PL?
 
-Add note in pod about the Net::Citadel repository and home page at GitHub?
+Add a note in the documenation about the Net::Citadel repository and home page
+at GitHub? Also include a refernce to where it is available at the C<gitpan>
+CPAN mirror at GitHub?
 
 
 =head2 Contstants
@@ -45,7 +48,8 @@ define it.
 Add an explicit C<return> line as necessary to those subroutines that do not
 have them.
 
-Export some functions, at least using C<EXPORT_OK>?
+Export some functions, at least using C<EXPORT_OK>? Perhaps for the ones that do
+require a login to run?
 
 =over 4
 
@@ -53,23 +57,23 @@ Export some functions, at least using C<EXPORT_OK>?
 
 Is the C<assert_room> command coming up with the correct floor information?
 
-Is part of the issue with the problem rooms being created during testing that
-it isn't running the CRE8 command properly; specifically that it isn't sending
-the parameters properly?
+Is the C<assert_room> function sending the parameters for the CRE8 command
+properly? (There is a note in the code indicating an uncertainty about what
+should be sent.)
 
 
 =item function C<new>
 
 Add being able to set the port option; if not present, it would default to
-the standard Citadel port number (using the CITADEL_PORT constant).
+the standard Citadel port number (using the C<CITADEL_PORT> constant).
 
 
 =item C<citadel_time> function
 
 The current C<citadel_time> function only returns the first two parameters
-from the TIME command:  C<1347624956|-14400>.  The Citadel TIME command
-itself actually returns: C<200 1347625545|-14400|1|1347537300>, with the
-'200' being the OK code and the rest being the four fields that it 
+from the TIME command:  C<1347624956|-14400>.  The Citadel TIME command itself
+actually returns a line like this: C<200 1347625545|-14400|1|1347537300>,
+with the '200' being the OK code and the rest being the four fields that it
 returns. So as currently written, the function doesn't return the daylight
 savings time indication and the actual citadel server start information.
 Function first needs to be changed to at least return all parameters.
@@ -81,14 +85,9 @@ key named 'error' or 'Error' if it is not successful. Update its POD
 to reflect the changes.
 
 
-=item C<echo> function
+=item C<citadel_echo> function
 
-The word C<echo> is pretty generic for a function name; rename it to something
-like C<citadel_echo>?
-
-Fix issue with c<echo> function documentation bug.
-
-It appears to test that what was sent was actually received back but doesn't
+It appears to test if what was sent was actually received back but doesn't
 explicitly return any indication one way or another; the function just
 croaks if there is no match. Add an explicit return of the value
 returned from the command? Or just return true for a normal exit?
@@ -104,8 +103,8 @@ of the module.
 
 =head2 Testing
 
-Change the names of the test floors and rooms to something like 'Test Floor'
-and 'Test Room'?
+Change the names of the test floors and rooms to something like C<Test Floor>
+and C<Test Room>?
 
 In the testing related to users, change to using the name TestUser.
 
@@ -113,18 +112,19 @@ Implement the testing for the C<retract_floor> function.
 
 Update the testing for the C<citadel_time> function to at least check the
 number of parameters returned? Three of the parameters are Unix timestamps;
-validate those in some way? The fourth parameter being returned is Boolean
-used to indicate Daylight Savings Time and should be a '0' or a '1';  check
-that?
+validate those in some way? The fourth parameter being returned is a Boolean
+and is used to indicate Daylight Savings Time and should be a '0' or a '1'.
 
-When testing for a floor, it looks for I<Main Floor>; that exists on 
+When testing for a floor, it looks for C<Main Floor>; that exists on
 a default install but may not be on an working system. Make it another
-configuration item? 
+configuration item, which if not configured would default to C<Main Floor>?
 
 Separate the testing to: functions that do not require a log in, those that do
 require a log in, those that are read only, those that write to the server. Or
 use the separation given in the documentation for the different Sections for
 the commands?
+
+Add a C<Testing> section of some sort to the configuration file?
 
 
 =head1 SEE ALSO
