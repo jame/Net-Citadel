@@ -517,6 +517,8 @@ sub citadel_echo {
 
     print $s "ECHO $msg\n";
     croak "message not echoed ($msg)" unless <$s> =~ /2.. $msg/;
+
+    return 1;
 }
 
 =pod
