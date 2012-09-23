@@ -502,15 +502,15 @@ sub remove_user {
 
 =over
 
-=item I<echo>
+=item I<citadel_echo>
 
-I<$c>->echo
+I<$c>->citadel_echo
 
 Tests the connection.
 
 =cut
 
-sub echo {
+sub citadel_echo {
     my $self = shift;
     my $msg  = shift;
     my $s    = $self->{socket};
