@@ -6,14 +6,26 @@ use warnings;
 require Exporter;
 use base qw(Exporter);
 
+use Carp qw( croak );
+
 use IO::Socket;
 use Data::Dumper;
+
+use Readonly;
 
 =pod
 
 =head1 NAME
 
 Net::Citadel - Citadel.org protocol coverage
+
+=head1 VERSION
+
+Version 0.10
+
+=cut
+
+our $VERSION = '0.10';
 
 =head1 SYNOPSIS
 
@@ -36,19 +48,27 @@ Citadel is a "turnkey open-source solution for email and collaboration" (this is
 can go :-). The main component is the I<citadel server>. To communicate with it you can use either
 a web interface, or - if you have to automate things - with a protocol
 
-   http://www.citadel.org/doku.php/documentation:appproto:start
+   L<http://www.citadel.org/doku.php?id=documentation:appproto:start>
 
 This package tries to do a bit of abstraction (more could be done) and handles some of the protocol
 handling.  The basic idea is that the application using the package deals with Citadel's objects:
 rooms, floors, users.
 
-=head1 INTERFACE
+=head1 CONSTANTS
+
+=head2 Configuration
+
+=over 4
+
+=item CITADEL_PORT
+
+The constant $CITADEL_PORT is equal to C<504>, which is the IANA standard Citadel port.
+
+=back
 
 =cut
 
-use constant {
-    CITADEL_PORT => 504
-};
+Readonly our $CITADEL_PORT => 504;
 
 use constant {
     LISTING_FOLLOWS => 100,
@@ -71,6 +91,8 @@ use constant {
 
 =pod
 
+=head1 INTERFACE
+
 =head2 Constructor
 
 The constructor creates a handle to the citadel server (and creates the TCP connection). It expects
@@ -82,13 +104,13 @@ the following named parameters:
 
 The hostname (or IP address) where the citadel server is running on. Defaults to C<localhost>.
 
-=item I<port> (default: C<CITADEL_PORT>)
+=item I<port> (default: C<$CITADEL_PORT>)
 
 The port there.
 
 =back
 
-The constructor will die if no connection can be established.
+The constructor will croak if no connection can be established.
 
 =cut
 
@@ -96,12 +118,12 @@ sub new {
     my $class = shift;
     my $self = bless { @_ }, $class;
     $self->{host} ||= 'localhost';
-    $self->{port} ||= CITADEL_PORT;
+    $self->{port} ||= $CITADEL_PORT;
     use IO::Socket::INET;
     $self->{socket} = IO::Socket::INET->new (PeerAddr => $self->{host},
 					     PeerPort => $self->{port},
 					     Proto    => 'tcp',
-					     Type     => SOCK_STREAM) or die "cannot connect to $self->{host}:$self->{port} ($@)";
+					     Type     => SOCK_STREAM) or croak "cannot connect to $self->{host}:$self->{port} ($@)";
     my $s = $self->{socket}; <$s>; # consume banner
     return $self;
 }
@@ -118,7 +140,7 @@ sub new {
 
 I<$c>->login (I<$user>, I<$pwd>)
 
-Logs in this user, or will die if that fails.
+Logs in this user, or will croak if that fails.
 
 =cut
 
@@ -129,10 +151,10 @@ sub login {
     my $s    = $self->{socket};
 
     print $s "USER $user\n";
-    <$s> =~ /(\d).. (.*)/ and ($1 == 3 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 3 or croak $2);
 
     print $s "PASS $pwd\n";
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 }
 
 =pod
@@ -150,7 +172,7 @@ sub logout {
     my $s    = $self->{socket};
 
     print $s "LOUT\n";
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 }
 
 =pod
@@ -175,7 +197,7 @@ sub floors {
     my $s    = $self->{socket};
 
     print $s "LFLR\n";
-    <$s> =~ /(\d).. (.*)/ and ($1 == 1 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 1 or croak $2);
 
     my @floors;
     while (($_ = <$s>) !~ /^000/) {
@@ -196,7 +218,7 @@ sub floors {
 
 I<$c>->assert_floor (I<$floor_name>)
 
-Creates the floor with the name provided, or if it already exists simply returns. This only dies if
+Creates the floor with the name provided, or if it already exists simply returns. This only croaks if
 there are insufficient privileges.
 
 =cut
@@ -207,7 +229,7 @@ sub assert_floor {
 
     my $s    = $self->{socket};
     print $s "CFLR $name|1\n";  # we really want to create it
-    <$s> =~ /(\d).. (.*)/ and ($1 == 1 or $1 == 2 or $2 =~ /already exists/ or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 1 or $1 == 2 or $2 =~ /already exists/ or croak $2);
 #CFLR XXX|1
 #550 This command requires Aide access.
 }
@@ -218,8 +240,8 @@ sub assert_floor {
 
 I<$c>->retract_floor (I<$floor_name>)
 
-Retracts a floor with this name. Dies if that fails because of insufficient privileges. Does
-not die if the floor did not exist.
+Retracts a floor with this name. croaks if that fails because of insufficient privileges. Does
+not croak if the floor did not exist.
 
 B<NOTE>: Citadel server (v7.20) seems to have the bug that you cannot
 delete an empty floor without restarting the server. Not much I can do
@@ -236,7 +258,7 @@ sub retract_floor {
 	if ($floors[$i]->{name} eq $name) {
 	    my $s    = $self->{socket};
 	    print $s "KFLR $i|1\n";  # we really want to delete it
-	    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or $2 =~ /not in use/ or die $2);
+	    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or $2 =~ /not in use/ or croak $2);
 	    return;
 	}
     }
@@ -260,11 +282,11 @@ sub rooms {
 
     my @floors  = $self->floors;
 #warn "looking for $name rooms ". Dumper \@floors;
-    my ($floor) = grep { $_->{name} eq $name } @floors or die "no floor '$name' known";
+    my ($floor) = grep { $_->{name} eq $name } @floors or croak "no floor '$name' known";
 #warn "found floor: ".Dumper $floor;
 
     print $s "LKRA ".$floor->{id}."\n";
-    <$s> =~ /(\d).. (.*)/ and ($1 == 1 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 1 or croak $2);
     my @rooms;
     while (($_ = <$s>) !~ /^000/) {
 #warn "processing $_";
@@ -318,7 +340,7 @@ sub assert_room {
     my $self    = shift;
     my $fname   = shift;
     my @floors  = $self->floors;
-    my ($floor) = grep { $_->{name} eq $fname } @floors or die "no floor '$fname' known";
+    my ($floor) = grep { $_->{name} eq $fname } @floors or croak "no floor '$fname' known";
 
     my $name  = shift;
     my $attrs = shift;
@@ -335,7 +357,7 @@ sub assert_room {
 		   '|'.   # no idea what this is
 		   $attrs->{default_view}.'|'.
 		   "\n";
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or $2 =~ /already exists/ or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or $2 =~ /already exists/ or croak $2);
 }
 
 #CRE8 1|Bumsti|0||0|||
@@ -357,11 +379,11 @@ sub retract_room {
     my $s    = $self->{socket};
     print $s "GOTO $name\n";
 #GOTO Bumsti
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 Lobby|0|0|0|2|0|0|0|1|0|0|0|0|0|0|
     print $s "KILL 1\n";
 #KILL 1
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 'Bumsti' deleted.
 }
 
@@ -389,7 +411,7 @@ sub create_user {
     my $s    = $self->{socket};
     print $s "CREU $name|$pwd\n";
 #CREU RobertBarta|xxx
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 User 'RobertBarta' created and password set.
 }
 
@@ -429,7 +451,7 @@ sub change_user {
 
     print $s "AGUP $name\n";
 #AGUP RobertBarta
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 RobertBarta|ggg|10768|1|0|4|4|1191255938|0
     my %user;
     my @attrs = ('name', 'password', 'flags', 'times_called', 'messages_posted', 'access_level', 'user_number', 'timestamp', 'purge_time');
@@ -439,7 +461,7 @@ sub change_user {
     $user{access_level} = $changes{access_level} if $changes{access_level};
 
     print $s "ASUP ".(join "|", @user{ @attrs })."\n";
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 }
 
 =pod
@@ -460,7 +482,7 @@ sub remove_user {
 
     print $s "AGUP $name\n";
 #AGUP RobertBarta
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 RobertBarta|ggg|10768|1|0|4|4|1191255938|0
     my %user;
     my @attrs = ('name', 'password', 'flags', 'times_called', 'messages_posted', 'access_level', 'user_number', 'timestamp', 'purge_time');
@@ -469,7 +491,7 @@ sub remove_user {
     $user{access_level} = DELETED_USER;
 
     print $s "ASUP ".(join "|", @user{ @attrs })."\n";
-    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or die $2);
+    <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 }
 
 =pod
@@ -480,40 +502,43 @@ sub remove_user {
 
 =over
 
-=item I<echo>
+=item I<citadel_echo>
 
-I<$c>->echo
+I<$c>->citadel_echo (I<$string>)
 
-Tests the connection.
+Tests a connection to the Citadel server by sending a message string to it and
+then checking to see if that same string is echoed back.
 
 =cut
 
-sub echo {
+sub citadel_echo {
     my $self = shift;
     my $msg  = shift;
     my $s    = $self->{socket};
 
     print $s "ECHO $msg\n";
-    die "message not echoed ($msg)" unless <$s> =~ /2.. $msg/;
+    croak "message not echoed ($msg)" unless <$s> =~ /2.. $msg/;
+
+    return 1;
 }
 
 =pod
 
-=item I<time>
+=item I<citadel_time>
 
-I<$t> = I<$c>->time
+I<$t> = I<$c>->citadel_time
 
-Gets the UNIX time from the server.
+Gets the current system time and time zone offset from UTC in UNIX timestamp format from the Citadel server.
 
-C<TODO>: timezone handling
+C<TODO>: Rewrite function to return the unpacked parameters as a hash upon success.
 
 =cut
 
-sub time {
+sub citadel_time {
     my $self = shift;
     my $s    = $self->{socket};
     print $s "TIME\n";
-    die "protocol: time failed" unless <$s> =~ /2.. (.*)\|(.*)\|(.*)/;  # not sure what the others are
+    croak "protocol: citadel_time failed" unless <$s> =~ /2.. (.*)\|(.*)\|(.*)/;  # not sure what the others are
     return $1;
 }
 
@@ -527,15 +552,17 @@ sub time {
 
 =head1 SEE ALSO
 
-   http://www.citadel.org/doku.php/documentation:appproto:app_proto
+   L<http://www.citadel.org/doku.php?id=documentation:appproto:app_proto>
 
-=head1 AUTHOR
+=head1 AUTHORS
 
 Robert Barta, E<lt>drrho@cpan.orgE<gt>
+Robert James Clay, E<lt>jame@rocasa.usE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
 Copyright (C) 200[78] by Robert Barta
+Copyright (C) 2012 by Robert James Clay
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.8 or,
@@ -544,7 +571,6 @@ at your option, any later version of Perl 5 you may have available.
 
 =cut
 
-our $VERSION = '0.02';
 
 1;
 

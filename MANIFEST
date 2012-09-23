@@ -6,4 +6,5 @@ t/test.yaml
 t/00pods.t
 t/01citadel.t
 lib/Net/Citadel.pm
+lib/Net/Citadel/ToDo.pod
 META.yml                                 Module meta-data (added by MakeMaker)

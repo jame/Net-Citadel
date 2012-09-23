@@ -5,13 +5,17 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
     NAME              => 'Net::Citadel',
     VERSION_FROM      => 'lib/Net/Citadel.pm', # finds $VERSION
+    ABSTRACT_FROM     => 'lib/Net/Citadel.pm', # retrieve abstract from module
+    AUTHOR            => 'Robert Barta <rho@devc.at>, Robert James Clay <jame@rocasa.us>',
     PREREQ_PM         => {
-	'Config::YAML' => '1.42',
+           'Readonly' => '0',
     },
-
-    ($] >= 5.005 ?     ## Add these new keywords supported since 5.005
-      (ABSTRACT_FROM  => 'lib/Net/Citadel.pm', # retrieve abstract from module
-       AUTHOR         => 'Robert Barta <rho@devc.at>') : ()),
+    BUILD_REQUIRES    => {
+       'Config::YAML' => '1.42',
+         'Test::More' => '0',
+          'Test::Pod' => '0',
+    },
+    clean             => { FILES => 'Net-Citadel-*' },
 );
 
 package MY;

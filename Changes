@@ -1,10 +1,51 @@
 Revision history for Perl extension Net::Citadel.
 
+0.10    17:54 23 September 2012
+  - Rename 'echo' function in Citadel.pm to 'citadel_echo'.
+  - Add an explicit 'return' line to the citadel_echo function.
+  - Rename 'echo' function call in t/01citadel.t to 'citadel_echo'.
+  - Rewrite the citadel_echo function POD documentation. RT#71743
+
+0.09    14:46 23 September 2012
+  - Change AUTHOR parameter in Makefile.PL to be a string.
+  - Fix a tabs issue in the 'package MY' section of the Makefile.PL file.
+  - Update the README file and add current version of lib/Net/Citadel/ToDo.pod
+    documentation file.
+
+0.08    17:51 17 September 2012
+  Changes to Makefile.PL:
+  - Clean up of whitespace and tabs.
+  - Add the Readonly module to the PREREQ_PM section.
+  - Add a 'clean' configuration item to the Makefile.PL file.
+  - Move AUTHOR and ABSTRACT_FROM to earlier in the Makefile.PL file.
+  - Move Config::YAML plus add TEST::MORE and TEST::Pod to BUILD_REQUIRES.
+
+0.07    16:13 17 September 2012
+  - Correct URLs for the Citadel Application API information in the JAM.pm file.
+  - Move the VERSION code line in and add a VERSION POD documentation section
+    to the JAM.pm file.
+
+0.06    13:34 17 September 2012
+  - Change to using Readonly for the constant CITADEL_PORT.
+  - Update usage of the constant CITADEL_PORT to '$CITADEL_PORT'.
+  - Add POD documentation for the constant $CITADEL_PORT.
+
+0.05    08:53 14 September 2012
+  - Rename the 'time' function in Citadel.pm to 'citadel_time'.
+  - Rename the 'time' function call in t/01citadel.t to 'citadel_time'.
+  - Rewrite the POD documentation for the citadel_time function.
+
+0.04    13:36 12 September 2012
+  - Use the Carp module in the lib/Net/Citadel.pm file.
+  - Use 'croak' instead of 'die' in the lib/Net/Citadel.pm file.
+
+0.03    12:46 12 September 2012
+  - As the new maintainer; add Robert James Clay to the COPYRIGHT AND LICENSE
+    section in the README file and to the AUTHORS and COPYRIGHT AND LICENSE
+    sections in Citadel.pm.
+
 0.02  So 3. Feb 10:56:28 CET 2008
-	- some typos fixes
+  - some typos fixes
 
 0.01  Mon Oct  1 09:07:58 2007
-	- first, very rough cut to get something working
-
-
-
+  - first, very rough cut to get something working

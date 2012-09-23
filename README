@@ -1,10 +1,10 @@
 Net-Citadel
 ===========
 
-This package is a first cut on supporting the Citadel application
-protocol as defined in
+This package is a Perl extension to support the Citadel application
+protocol as defined in:
 
-  http://www.citadel.org/doku.php/documentation:appproto:app_proto
+  http://www.citadel.org/doku.php?id=documentation:appproto:app_proto
 
 At this stage the package supports only some basic functionality, but
 more can be added easily. Also the API is only a first (quick)
@@ -26,9 +26,8 @@ To install this module type the following:
 
 COPYRIGHT AND LICENCE
 
-Put the correct copyright and licence information here.
-
-Copyright (C) 2007 by Robert Barta
+Copyright (C) 2007-2008 by Robert Barta
+Copyright (C)      2012 by Robert James Clay
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.8 or,

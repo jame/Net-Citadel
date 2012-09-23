@@ -30,8 +30,8 @@ $c->logout and pass ('logout');
 
 $c->login ($config->{account}->{username}, $config->{account}->{password});
 
-$c->echo ('rrrrrr') and pass ('echo');
-$c->time and pass ('time');
+$c->citadel_echo ('rrrrrr') and pass ('echo');
+$c->citadel_time and pass ('time');
 
 # try to get rid of any testing artefacts
 eval {
