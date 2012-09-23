@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::Citadel.
 
+0.09    11:20 23 September 2012
+  - Start v0.09 development.
+
 0.08    17:51 17 September 2012
   Changes to Makefile.PL:
   - Clean up of whitespace and tabs.
