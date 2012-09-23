@@ -504,9 +504,10 @@ sub remove_user {
 
 =item I<citadel_echo>
 
-I<$c>->citadel_echo
+I<$c>->citadel_echo (I<$string>)
 
-Tests the connection.
+Tests a connection to the Citadel server by sending a message string to it and
+then checking to see if that same string is echoed back.
 
 =cut
 
