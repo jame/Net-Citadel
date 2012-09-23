@@ -1,5 +1,11 @@
 Revision history for Perl extension Net::Citadel.
 
+0.10    17:54 23 September 2012
+  - Rename 'echo' function in Citadel.pm to 'citadel_echo'.
+  - Add an explicit 'return' line to the citadel_echo function.
+  - Rename 'echo' function call in t/01citadel.t to 'citadel_echo'.
+  - Rewrite the citadel_echo function POD documentation. RT#71743
+
 0.09    14:46 23 September 2012
   - Change AUTHOR parameter in Makefile.PL to be a string.
   - Fix a tabs issue in the 'package MY' section of the Makefile.PL file.

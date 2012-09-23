@@ -21,11 +21,11 @@ Net::Citadel - Citadel.org protocol coverage
 
 =head1 VERSION
 
-Version 0.09
+Version 0.10
 
 =cut
 
-our $VERSION = '0.09';
+our $VERSION = '0.10';
 
 =head1 SYNOPSIS
 
@@ -502,21 +502,24 @@ sub remove_user {
 
 =over
 
-=item I<echo>
+=item I<citadel_echo>
 
-I<$c>->echo
+I<$c>->citadel_echo (I<$string>)
 
-Tests the connection.
+Tests a connection to the Citadel server by sending a message string to it and
+then checking to see if that same string is echoed back.
 
 =cut
 
-sub echo {
+sub citadel_echo {
     my $self = shift;
     my $msg  = shift;
     my $s    = $self->{socket};
 
     print $s "ECHO $msg\n";
     croak "message not echoed ($msg)" unless <$s> =~ /2.. $msg/;
+
+    return 1;
 }
 
 =pod
