@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::Citadel.
 
+0.10    16:14 23 September 2012
+  - Start v0.10 development
+
 0.09    14:46 23 September 2012
   - Change AUTHOR parameter in Makefile.PL to be a string.
   - Fix a tabs issue in the 'package MY' section of the Makefile.PL file.
