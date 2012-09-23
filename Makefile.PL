@@ -6,7 +6,7 @@ WriteMakefile(
     NAME              => 'Net::Citadel',
     VERSION_FROM      => 'lib/Net/Citadel.pm', # finds $VERSION
     ABSTRACT_FROM     => 'lib/Net/Citadel.pm', # retrieve abstract from module
-    AUTHOR            => [ 'Robert Barta <rho@devc.at>', 'Robert James Clay <jame@rocasa.us>' ],
+    AUTHOR            => 'Robert Barta <rho@devc.at>, Robert James Clay <jame@rocasa.us>',
     PREREQ_PM         => {
            'Readonly' => '0',
     },
