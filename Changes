@@ -1,5 +1,11 @@
 Revision history for Perl extension Net::Citadel.
 
+0.09    14:46 23 September 2012
+  - Change AUTHOR parameter in Makefile.PL to be a string.
+  - Fix a tabs issue in the 'package MY' section of the Makefile.PL file.
+  - Update the README file and add current version of lib/Net/Citadel/ToDo.pod
+    documentation file.
+
 0.08    17:51 17 September 2012
   Changes to Makefile.PL:
   - Clean up of whitespace and tabs.
