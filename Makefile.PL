@@ -12,10 +12,10 @@ WriteMakefile(
     },
     BUILD_REQUIRES    => {
        'Config::YAML' => '1.42',
-       'Test::More' => '0',
-       'Test::Pod' => '0',
+         'Test::More' => '0',
+          'Test::Pod' => '0',
     },
-    clean               => { FILES => 'Net-Citadel-*' },
+    clean             => { FILES => 'Net-Citadel-*' },
 );
 
 package MY;
