@@ -1,3 +1,20 @@
+libnet-citadel-perl (0.10-1) UNRELEASED; urgency=low
+
+  TODO:
+  - debian/copyright:
+    + "Format-Specification" is now standardized; update file as necessary.
+    + Update "Maintainer" to be myself.
+    + Add myself to 'Files: *' copyright.
+    + Add 2012 to my 'Files: debian/*' copyright.
+  - debian/control:
+    + Update Standards-Version to current (3.9.3?).
+  - Updates related to new upstream.
+    + The new upstream has a fix for the echo function documentation issue;
+      the patch can now be removed.
+  * New upstream release.
+
+ -- Robert James Clay <jame@rocasa.us>  Mon, 24 Sep 2012 09:19:35 -0400
+
 libnet-citadel-perl (0.02-1) unstable; urgency=low
 
   * Initial Release. (Closes: #649410)
