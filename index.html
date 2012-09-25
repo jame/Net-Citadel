@@ -32,7 +32,7 @@
       <div class="midHeader">
         <h1 class="headerTitle" lang="en">Net-Citadel</h1> 
         <div class="headerSubTitle" title="jame/Net-Citadel at GitHub">
-            Debian packaging for Net::Citadel
+            Net::Citadel Perl Module
         </div>
 
         <br class="doNotDisplay doNotPrint" />
@@ -65,15 +65,29 @@
 
         <div class="twoThirds noBorderOnLeft">
 
-        <p>This project is primarily about Debian packaging for Net::Citadel, which is a Perl module
-            that is a "first cut on supporting the Citadel
-            <a href="http://www.citadel.org/doku.php?id=documentation:appproto:app_proto">application protocol</a>".
-            This repository was initially forked from <a href="https://github.com/gitpan/Net-Citadel.git">gitpan/Net-Citadel.git</a>
-            and the <a href="https://github.com/jame/Net-Citadel/tree/debian">debian</a> branch was then added to
-            be used for the development of the debian packaging directory for the Perl module.
+        <p>Net::Citadel is a Perl module which can be used to access the <a href="http://www.citadel.org">Citadel.org</a>
+           <a href="http://www.citadel.org/doku.php?id=documentation:appproto:app_proto">application protocol</a> using Perl.
+            Besides its development and availibility here, distribution of the module can also be
+            found at CPAN and in Debian.
         </p>
 
-        <p>The module is packaged for inclusion in Debian as the package libnet-citadel-perl, where it is being
+        <p>
+           This project was initially forked from the Net::Citadel CPAN mirror
+           <a href="https://github.com/gitpan/Net-Citadel.git">gitpan/Net-Citadel.git</a>
+           (represented now by the <a href="https://github.com/jame/Net-Citadel/tree/gitpan">gitpan</a> branch here)
+           
+           
+           and the <a href="https://github.com/jame/Net-Citadel/tree/debian">debian</a> branch was then added to the repository
+           where it and the <a href="https://github.com/jame/Net-Citadel/tree/master">master</a> branch (and along with the
+           <a href="https://github.com/jame/Net-Citadel/tree/pristine-tar">pristine-tar</a> branch)
+           are used for the development and maintenance of the Debian packaging.
+           
+           Development of the module itself is done on the <a href="https://github.com/jame/Net-Citadel/tree/develop">develop</a>
+           branch and stable releases are kept on the <a href="https://github.com/jame/Net-Citadel/tree/stable">stable</a> branch.
+
+        </p>
+
+        <p>The module is packaged for inclusion in Debian as libnet-citadel-perl, where it is being
            done under the auspices of the <a href="http://wiki.debian.org/Teams/DebianPerlGroup">Debian Perl Team</a>.
            The status of the package itself can be seen at its
            <a href="http://packages.qa.debian.org/libn/libnet-citadel-perl.html">Package</a> page.
