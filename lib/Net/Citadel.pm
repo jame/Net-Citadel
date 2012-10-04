@@ -143,10 +143,21 @@ indicate that after this line, read C<n> bytes. (<Cn> follows after a blank)
 
 =cut
 
-Readonly our $BINARY_FOLLOWS => 600;
+BINARY_FOLLOWS => 600;
 
 
-    SEND_BINARY     => 700,
+=item SEND_BINARY
+
+The result code $SEND_BINARY is equal to C<700> and is used by the Citadel server to
+indicate that C<n> bytes of binary data can now be sent. (C<n> follows after a blank.
+
+=back
+
+=cut
+
+Readonly our $SEND_BINARY => 700;
+
+
     START_CHAT_MODE => 800
 };
 
