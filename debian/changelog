@@ -1,7 +1,7 @@
 libnet-citadel-perl (0.10-1) unstable; urgency=low
 
   * New upstream release.
-  * Updated the Standards-Version to 3.9.3 in debian/control.
+  * Updated the Standards-Version to 3.9.4 in debian/control.
   * Changes to debian/copyright:
     - Update the copyright years for the debian/* files.
     - Correct 'Name' as 'Upstream-Name' in the header stanza.
