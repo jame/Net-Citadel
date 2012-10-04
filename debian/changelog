@@ -1,19 +1,17 @@
-libnet-citadel-perl (0.10-1) UNRELEASED; urgency=low
+libnet-citadel-perl (0.10-1) unstable; urgency=low
 
-  TODO:
-  - debian/copyright:
-    + "Format-Specification" is now standardized; update file as necessary.
-    + Add separate item for new lib/Net/Citadel/ToDo.pod file.
-    + Update "Maintainer" to be myself.
-  - debian/control:
-    + Update Standards-Version to current (3.9.3?).
   * New upstream release.
+  * Updated the Standards-Version to 3.9.3 in debian/control.
   * Changes to debian/copyright:
     - Update the copyright years for the debian/* files.
+    - Correct 'Name' as 'Upstream-Name' in the header stanza.
     - Update the listed copyright holders in the 'Files: *' section.
+    - Add a separate stanza for the new lib/Net/Citadel/ToDo.pod file.
+    - Update 'Maintainer' as 'Upstream-Contact' and update who that is.
+    - Correct the Format line in the header stanza to indicate version v1.0.
   * Remove debian/patches/echo-function-doc.patch as it is no longer needed.
 
- -- Robert James Clay <jame@rocasa.us>  Mon, 24 Sep 2012 12:00:02 -0400
+ -- Robert James Clay <jame@rocasa.us>  Thu, 04 Oct 2012 11:54:39 -0400
 
 libnet-citadel-perl (0.02-1) unstable; urgency=low
 
