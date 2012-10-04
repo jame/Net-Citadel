@@ -1,7 +1,7 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Maintainer: Robert Barta, <drrho@cpan.org>
 Source: http://search.cpan.org/dist/Net-Citadel/
-Name: Net-Citadel
+Upstream-Name: Net-Citadel
 
 Files: *
 Copyright: 2007-2008, Robert Barta, <drrho@cpan.org>
