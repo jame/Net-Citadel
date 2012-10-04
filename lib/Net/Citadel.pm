@@ -145,7 +145,6 @@ indicate that after this line, read C<n> bytes. (<Cn> follows after a blank)
 
 BINARY_FOLLOWS => 600;
 
-
 =item SEND_BINARY
 
 The result code $SEND_BINARY is equal to C<700> and is used by the Citadel server to
@@ -157,9 +156,18 @@ indicate that C<n> bytes of binary data can now be sent. (C<n> follows after a b
 
 Readonly our $SEND_BINARY => 700;
 
+=item START_CHAT_MODE
 
-    START_CHAT_MODE => 800
-};
+The result code $START_CHAT_MODE is equal to C<800> and is used by the Citadel
+server to indicate that the system is in chat mode now. Every line sent will be
+broadcasted.
+
+=back
+
+=cut
+
+Readonly our $START_CHAT_MODE => 800;
+
 
 use constant {
     PUBLIC             => 0,
