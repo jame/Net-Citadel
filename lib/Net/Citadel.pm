@@ -95,9 +95,20 @@ server to indicate that the requested operation succeeded.
 
 =cut
 
-Readonly our $CIT_OK => 200,
+Readonly our $CIT_OK => 200;
 
-    MORE_DATA       => 300,
+=item MORE_DATA
+
+The result code $MORE_DATA is equal to C<300> and is used by the Citadel server
+to indicate that the requested operation succeeded but that another command is
+required to complete it.
+
+=back
+
+=cut
+
+Readonly our $MORE_DATA => 300;
+
     SEND_LISTING    => 400,
     ERROR           => 500,
     BINARY_FOLLOWS  => 600,
