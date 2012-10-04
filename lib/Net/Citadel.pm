@@ -72,10 +72,20 @@ Readonly our $CITADEL_PORT => 504;
 
 =head2 Result Codes
 
+=over 4
+
+=item LISTING_FOLLOWS
+
+The result code $LISTING_FOLLOWS is equal to C<100> and is used by the Citadel
+server to indicate that after the server response, the server will output a
+listing of some sort.
+
+=back
+
 =cut
 
-use constant {
-    LISTING_FOLLOWS => 100,
+Readonly our $LISTING_FOLLOWS => 100;
+
     CIT_OK          => 200,
     MORE_DATA       => 300,
     SEND_LISTING    => 400,
