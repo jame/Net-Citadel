@@ -86,7 +86,17 @@ listing of some sort.
 
 Readonly our $LISTING_FOLLOWS => 100;
 
-    CIT_OK          => 200,
+=item CIT_OK
+
+The result code $CIT_OK is equal to C<200> and is used by the Citadel
+server to indicate that the requested operation succeeded.
+
+=back
+
+=cut
+
+Readonly our $CIT_OK => 200,
+
     MORE_DATA       => 300,
     SEND_LISTING    => 400,
     ERROR           => 500,
