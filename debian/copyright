@@ -1,5 +1,5 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Maintainer: Robert Barta, <drrho@cpan.org>
+Upstream-Contact: Robert James Clay, <jame@cpan.org>
 Source: http://search.cpan.org/dist/Net-Citadel/
 Upstream-Name: Net-Citadel
 
