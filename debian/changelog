@@ -1,4 +1,11 @@
-libnet-citadel-perl (0.10-1) unstable; urgency=low
+libnet-citadel-perl (0.10-1) UNRELEASED; urgency=low
+
+  PROBLEM:
+  fails to build with:
+
+  dpkg-source: info: building libnet-citadel-perl using existing ./libnet-citadel-perl_0.10.orig.tar.gz
+  dpkg-source: info: local changes detected, the modified files are:
+   libnet-citadel-perl-0.10/META.yml
 
   * New upstream release.
   * Updated the Standards-Version to 3.9.4 in debian/control.
