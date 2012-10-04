@@ -134,7 +134,18 @@ the error code and/or the error message following it describes why.
 Readonly our $ERROR => 500;
 
 
-    BINARY_FOLLOWS  => 600,
+=item BINARY_FOLLOWS
+
+The result code $BINARY_FOLLOWS is equal to C<600> and is used by the Citadel server to
+indicate that after this line, read C<n> bytes. (<Cn> follows after a blank)
+
+=back
+
+=cut
+
+Readonly our $BINARY_FOLLOWS => 600;
+
+
     SEND_BINARY     => 700,
     START_CHAT_MODE => 800
 };
