@@ -109,7 +109,19 @@ required to complete it.
 
 Readonly our $MORE_DATA => 300;
 
-    SEND_LISTING    => 400,
+=item SEND_LISTING
+
+The result code $SEND_LISTING is equal to C<400> and is used by the Citadel
+server to indicate that the requested operation is progressing and it is now
+expecting zero or more lines of text.
+
+=back
+
+=cut
+
+Readonly our $SEND_LISTING => 400;
+
+
     ERROR           => 500,
     BINARY_FOLLOWS  => 600,
     SEND_BINARY     => 700,
