@@ -121,8 +121,19 @@ expecting zero or more lines of text.
 
 Readonly our $SEND_LISTING => 400;
 
+=item ERROR
 
-    ERROR           => 500,
+The result code $ERROR is equal to C<500> and is used by the Citadel server to
+indicate that the requested operation failed. The second and third digits of
+the error code and/or the error message following it describes why.
+
+=back
+
+=cut
+
+Readonly our $ERROR => 500;
+
+
     BINARY_FOLLOWS  => 600,
     SEND_BINARY     => 700,
     START_CHAT_MODE => 800
