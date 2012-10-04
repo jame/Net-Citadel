@@ -70,6 +70,10 @@ The constant $CITADEL_PORT is equal to C<504>, which is the IANA standard Citade
 
 Readonly our $CITADEL_PORT => 504;
 
+=head2 Result Codes
+
+=cut
+
 use constant {
     LISTING_FOLLOWS => 100,
     CIT_OK          => 200,
