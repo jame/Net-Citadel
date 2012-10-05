@@ -234,8 +234,14 @@ The User related constant $NEW_USER is equal to C<1>.
 
 Readonly our $NEW_USER => 1;
 
+=item PROBLEM_USER
 
-    PROBLEM_USER   => 2,
+The User related constant $PROBLEM_USER is equal to C<2>.
+
+=cut
+
+Readonly our $PROBLEM_USER  => 2;
+
     LOCAL_USER     => 3,
     NETWORK_USER   => 4,
     PREFERRED_USER => 5,
