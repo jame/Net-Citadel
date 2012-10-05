@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::Citadel.
 
+0.13    hh:mm  5 October 2012
+  - Start v0.13 development,
+
 0.12    14:44  5 October 2012
   - Change to use the Readonly module for the Room Access constants: PUBLIC,
     PRIVATE, PRIVATE_PASSWORD, PRIVATE_INVITATION, and PERSONAL.
