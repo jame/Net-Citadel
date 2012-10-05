@@ -185,7 +185,6 @@ room is to have private access.
 
 Readonly our $PRIVATE => 1;
 
-
 =item PRIVATE_PASSWORD
 
 The room access code $PRIVATE_PASSWORD is equal to C<2> and is used to indicate
@@ -195,8 +194,16 @@ that a room is to have private access using a password.
 
 Readonly our $PRIVATE_PASSWORD => 2;
 
+=item PRIVATE_INVITATION
 
-    PRIVATE_INVITATION => 3,
+The room access code $PRIVATE_INVITATION is equal to C<3> and is used to indicate
+that a room is to have private access by invitation.
+
+=cut
+
+Readonly our $PRIVATE_INVITATION => 3;
+
+
     PERSONAL           => 4
     };
 
