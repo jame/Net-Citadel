@@ -163,6 +163,12 @@ server to indicate that there is a page waiting that needs to be fetched.
 
 Readonly our $ASYNC_MSG => 900;
 
+=head2 Room Access
+
+=over 4
+
+=cut
+
 use constant {
     PUBLIC             => 0,
     PRIVATE            => 1,
