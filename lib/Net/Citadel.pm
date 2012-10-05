@@ -214,6 +214,12 @@ that a room is to be a private mailbox only for a particular user.
 
 Readonly our $PERSONAL => 4;
 
+=head2 User related
+
+=over 4
+
+=cut
+
 use constant {
     DELETED_USER   => 0,
     NEW_USER       => 1,
