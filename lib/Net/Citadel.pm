@@ -176,7 +176,16 @@ room is to have public access.
 
 Readonly our $PUBLIC => 0;
 
-    PRIVATE            => 1,
+=item PRIVATE
+
+The room access code $PRIVATE is equal to C<1> and is used to indicate that a
+room is to have private access.
+
+=cut
+
+Readonly our $PRIVATE => 1;
+
+
     PRIVATE_PASSWORD   => 2,
     PRIVATE_INVITATION => 3,
     PERSONAL           => 4
