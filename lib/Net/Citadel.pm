@@ -214,6 +214,16 @@ that a room is to be a private mailbox only for a particular user.
 
 Readonly our $PERSONAL => 4;
 
+use constant {
+    DELETED_USER   => 0,
+    NEW_USER       => 1,
+    PROBLEM_USER   => 2,
+    LOCAL_USER     => 3,
+    NETWORK_USER   => 4,
+    PREFERRED_USER => 5,
+    AIDE           => 6
+};
+
 =pod
 
 =head1 INTERFACE
@@ -539,16 +549,6 @@ sub create_user {
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 User 'RobertBarta' created and password set.
 }
-
-use constant {
-    DELETED_USER   => 0,
-    NEW_USER       => 1,
-    PROBLEM_USER   => 2,
-    LOCAL_USER     => 3,
-    NETWORK_USER   => 4,
-    PREFERRED_USER => 5,
-    AIDE           => 6
-};
 
 =pod
 
