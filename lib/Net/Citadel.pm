@@ -21,11 +21,11 @@ Net::Citadel - Citadel.org protocol coverage
 
 =head1 VERSION
 
-Version 0.12
+Version 0.13
 
 =cut
 
-our $VERSION = '0.12';
+our $VERSION = '0.13';
 
 =head1 SYNOPSIS
 
@@ -213,6 +213,68 @@ that a room is to be a private mailbox only for a particular user.
 =cut
 
 Readonly our $PERSONAL => 4;
+
+=head2 User related
+
+=over 4
+
+=item DELETED_USER
+
+The room access code $DELETED_USER is equal to C<0>.
+
+=cut
+
+Readonly our $DELETED_USER => 0;
+
+=item NEW_USER
+
+The User related constant $NEW_USER is equal to C<1>.
+
+=cut
+
+Readonly our $NEW_USER => 1;
+
+=item PROBLEM_USER
+
+The User related constant $PROBLEM_USER is equal to C<2>.
+
+=cut
+
+Readonly our $PROBLEM_USER => 2;
+
+=item LOCAL_USER
+
+The User related constant $LOCAL_USER is equal to C<3>.
+
+=cut
+
+Readonly our $LOCAL_USER => 3;
+
+=item NETWORK_USER
+
+The User related constant $NETWORK_USER is equal to C<4>.
+
+=cut
+
+Readonly our $NETWORK_USER => 4;
+
+=item PREFERRED_USER
+
+The User related constant $PREFERRED_USER is equal to C<5>.
+
+=cut
+
+Readonly our $PREFERRED_USER => 5;
+
+=item AIDE_USER
+
+The User related constant $AIDE user is equal to C<6>.
+
+=back
+
+=cut
+
+Readonly our $AIDE => 6;
 
 =pod
 
@@ -539,16 +601,6 @@ sub create_user {
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 User 'RobertBarta' created and password set.
 }
-
-use constant {
-    DELETED_USER   => 0,
-    NEW_USER       => 1,
-    PROBLEM_USER   => 2,
-    LOCAL_USER     => 3,
-    NETWORK_USER   => 4,
-    PREFERRED_USER => 5,
-    AIDE           => 6
-};
 
 =pod
 
