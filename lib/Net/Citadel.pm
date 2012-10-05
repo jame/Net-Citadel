@@ -21,11 +21,11 @@ Net::Citadel - Citadel.org protocol coverage
 
 =head1 VERSION
 
-Version 0.10
+Version 0.11
 
 =cut
 
-our $VERSION = '0.10';
+our $VERSION = '0.11';
 
 =head1 SYNOPSIS
 
@@ -70,16 +70,98 @@ The constant $CITADEL_PORT is equal to C<504>, which is the IANA standard Citade
 
 Readonly our $CITADEL_PORT => 504;
 
-use constant {
-    LISTING_FOLLOWS => 100,
-    CIT_OK          => 200,
-    MORE_DATA       => 300,
-    SEND_LISTING    => 400,
-    ERROR           => 500,
-    BINARY_FOLLOWS  => 600,
-    SEND_BINARY     => 700,
-    START_CHAT_MODE => 800
-};
+=head2 Result Codes
+
+=over 4
+
+=item LISTING_FOLLOWS
+
+The result code $LISTING_FOLLOWS is equal to C<100> and is used by the Citadel
+server to indicate that after the server response, the server will output a
+listing of some sort.
+
+=cut
+
+Readonly our $LISTING_FOLLOWS => 100;
+
+=item CIT_OK
+
+The result code $CIT_OK is equal to C<200> and is used by the Citadel
+server to indicate that the requested operation succeeded.
+
+=cut
+
+Readonly our $CIT_OK => 200;
+
+=item MORE_DATA
+
+The result code $MORE_DATA is equal to C<300> and is used by the Citadel server
+to indicate that the requested operation succeeded but that another command is
+required to complete it.
+
+=cut
+
+Readonly our $MORE_DATA => 300;
+
+=item SEND_LISTING
+
+The result code $SEND_LISTING is equal to C<400> and is used by the Citadel
+server to indicate that the requested operation is progressing and it is now
+expecting zero or more lines of text.
+
+=cut
+
+Readonly our $SEND_LISTING => 400;
+
+=item ERROR
+
+The result code $ERROR is equal to C<500> and is used by the Citadel server to
+indicate that the requested operation failed. The second and third digits of
+the error code and/or the error message following it describes why.
+
+=cut
+
+Readonly our $ERROR => 500;
+
+
+=item BINARY_FOLLOWS
+
+The result code $BINARY_FOLLOWS is equal to C<600> and is used by the Citadel server to
+indicate that after this line, read C<n> bytes. (<Cn> follows after a blank)
+
+=cut
+
+BINARY_FOLLOWS => 600;
+
+=item SEND_BINARY
+
+The result code $SEND_BINARY is equal to C<700> and is used by the Citadel server to
+indicate that C<n> bytes of binary data can now be sent. (C<n> follows after a blank.
+
+=cut
+
+Readonly our $SEND_BINARY => 700;
+
+=item START_CHAT_MODE
+
+The result code $START_CHAT_MODE is equal to C<800> and is used by the Citadel
+server to indicate that the system is in chat mode now. Every line sent will be
+broadcasted.
+
+=cut
+
+Readonly our $START_CHAT_MODE => 800;
+
+=item ASYNC_MSG
+
+The result code $ASYC_MSG is equal to C<900> and is used by the Citadel
+server to indicate that there is a page waiting that needs to be fetched.
+
+=back
+
+=cut
+
+Readonly our $ASYNC_MSG => 900;
 
 use constant {
     PUBLIC             => 0,
