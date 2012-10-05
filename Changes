@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::Citadel.
 
+0.12    13:39  5 October 2012
+  - Start v0.12 development
+
 0.11    12:53  5 October 2012
   - Add a ReadOnly constant for the ASYNC_MSG result code.
   - Change to use the Readonly module for the Result Codes constants: CIT_OK,
