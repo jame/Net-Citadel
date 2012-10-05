@@ -250,18 +250,23 @@ The User related constant $LOCAL_USER is equal to C<3>.
 
 Readonly our $LOCAL_USER => 3;
 
-
 =item NETWORK_USER
 
 The User related constant $NETWORK_USER is equal to C<4>.
 
 =cut
 
-Readonly our $NETWORK_USER  => 4;
+Readonly our $NETWORK_USER => 4;
+
+=item PREFERRED_USER
+
+The User related constant $PREFERRED_USER is equal to C<5>.
+
+=cut
+
+Readonly our $PREFERRED_USER => 5;
 
 
-
-    PREFERRED_USER => 5,
     AIDE           => 6
 };
 
