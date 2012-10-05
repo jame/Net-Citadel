@@ -203,9 +203,16 @@ that a room is to have private access by invitation.
 
 Readonly our $PRIVATE_INVITATION => 3;
 
+=item PERSONAL
 
-    PERSONAL           => 4
-    };
+The room access code $PERSONAL is equal to C<4> and is used to indicate
+that a room is to be a private mailbox only for a particular user.
+
+=back
+
+=cut
+
+Readonly our $PERSONAL => 4;
 
 =pod
 
