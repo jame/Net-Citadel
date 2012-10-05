@@ -240,9 +240,17 @@ The User related constant $PROBLEM_USER is equal to C<2>.
 
 =cut
 
-Readonly our $PROBLEM_USER  => 2;
+Readonly our $PROBLEM_USER => 2;
 
-    LOCAL_USER     => 3,
+=item LOCAL_USER
+
+The User related constant $LOCAL_USER is equal to C<3>.
+
+=cut
+
+Readonly our $LOCAL_USER => 3;
+
+
     NETWORK_USER   => 4,
     PREFERRED_USER => 5,
     AIDE           => 6
