@@ -167,10 +167,15 @@ Readonly our $ASYNC_MSG => 900;
 
 =over 4
 
+=item PUBLIC
+
+The room access code $PUBLIC is equal to C<0> and is used to indicate that a
+room is to have public access.
+
 =cut
 
-use constant {
-    PUBLIC             => 0,
+Readonly our $PUBLIC => 0;
+
     PRIVATE            => 1,
     PRIVATE_PASSWORD   => 2,
     PRIVATE_INVITATION => 3,
