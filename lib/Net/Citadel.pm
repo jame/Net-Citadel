@@ -266,9 +266,15 @@ The User related constant $PREFERRED_USER is equal to C<5>.
 
 Readonly our $PREFERRED_USER => 5;
 
+=item AIDE_USER
 
-    AIDE           => 6
-};
+The User related constant $AIDE user is equal to C<6>.
+
+=back
+
+=cut
+
+Readonly our $AIDE => 6;
 
 =pod
 
