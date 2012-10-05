@@ -218,10 +218,16 @@ Readonly our $PERSONAL => 4;
 
 =over 4
 
+=item DELETED_USER
+
+The room access code $DELETED_USER is equal to C<0> and is used to indicate that a
+room is to have public access.
+
 =cut
 
-use constant {
-    DELETED_USER   => 0,
+Readonly our $DELETED_USER => 0;
+
+
     NEW_USER       => 1,
     PROBLEM_USER   => 2,
     LOCAL_USER     => 3,
