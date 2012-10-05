@@ -21,11 +21,11 @@ Net::Citadel - Citadel.org protocol coverage
 
 =head1 VERSION
 
-Version 0.11
+Version 0.12
 
 =cut
 
-our $VERSION = '0.11';
+our $VERSION = '0.12';
 
 =head1 SYNOPSIS
 
@@ -163,13 +163,56 @@ server to indicate that there is a page waiting that needs to be fetched.
 
 Readonly our $ASYNC_MSG => 900;
 
-use constant {
-    PUBLIC             => 0,
-    PRIVATE            => 1,
-    PRIVATE_PASSWORD   => 2,
-    PRIVATE_INVITATION => 3,
-    PERSONAL           => 4
-    };
+=head2 Room Access
+
+=over 4
+
+=item PUBLIC
+
+The room access code $PUBLIC is equal to C<0> and is used to indicate that a
+room is to have public access.
+
+=cut
+
+Readonly our $PUBLIC => 0;
+
+=item PRIVATE
+
+The room access code $PRIVATE is equal to C<1> and is used to indicate that a
+room is to have private access.
+
+=cut
+
+Readonly our $PRIVATE => 1;
+
+=item PRIVATE_PASSWORD
+
+The room access code $PRIVATE_PASSWORD is equal to C<2> and is used to indicate
+that a room is to have private access using a password.
+
+=cut
+
+Readonly our $PRIVATE_PASSWORD => 2;
+
+=item PRIVATE_INVITATION
+
+The room access code $PRIVATE_INVITATION is equal to C<3> and is used to indicate
+that a room is to have private access by invitation.
+
+=cut
+
+Readonly our $PRIVATE_INVITATION => 3;
+
+=item PERSONAL
+
+The room access code $PERSONAL is equal to C<4> and is used to indicate
+that a room is to be a private mailbox only for a particular user.
+
+=back
+
+=cut
+
+Readonly our $PERSONAL => 4;
 
 =pod
 
