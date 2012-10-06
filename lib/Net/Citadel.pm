@@ -681,6 +681,8 @@ sub remove_user {
 
     print $s "ASUP ".(join "|", @user{ @attrs })."\n";
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
+
+    return 1;
 }
 
 =pod
