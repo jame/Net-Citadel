@@ -21,11 +21,11 @@ Net::Citadel - Citadel.org protocol coverage
 
 =head1 VERSION
 
-Version 0.10
+Version 0.15
 
 =cut
 
-our $VERSION = '0.10';
+our $VERSION = '0.15';
 
 =head1 SYNOPSIS
 
@@ -70,24 +70,211 @@ The constant $CITADEL_PORT is equal to C<504>, which is the IANA standard Citade
 
 Readonly our $CITADEL_PORT => 504;
 
-use constant {
-    LISTING_FOLLOWS => 100,
-    CIT_OK          => 200,
-    MORE_DATA       => 300,
-    SEND_LISTING    => 400,
-    ERROR           => 500,
-    BINARY_FOLLOWS  => 600,
-    SEND_BINARY     => 700,
-    START_CHAT_MODE => 800
-};
+=head2 Result Codes
 
-use constant {
-    PUBLIC             => 0,
-    PRIVATE            => 1,
-    PRIVATE_PASSWORD   => 2,
-    PRIVATE_INVITATION => 3,
-    PERSONAL           => 4
-    };
+=over 4
+
+=item LISTING_FOLLOWS
+
+The result code $LISTING_FOLLOWS is equal to C<100> and is used by the Citadel
+server to indicate that after the server response, the server will output a
+listing of some sort.
+
+=cut
+
+Readonly our $LISTING_FOLLOWS => 100;
+
+=item CIT_OK
+
+The result code $CIT_OK is equal to C<200> and is used by the Citadel
+server to indicate that the requested operation succeeded.
+
+=cut
+
+Readonly our $CIT_OK => 200;
+
+=item MORE_DATA
+
+The result code $MORE_DATA is equal to C<300> and is used by the Citadel server
+to indicate that the requested operation succeeded but that another command is
+required to complete it.
+
+=cut
+
+Readonly our $MORE_DATA => 300;
+
+=item SEND_LISTING
+
+The result code $SEND_LISTING is equal to C<400> and is used by the Citadel
+server to indicate that the requested operation is progressing and it is now
+expecting zero or more lines of text.
+
+=cut
+
+Readonly our $SEND_LISTING => 400;
+
+=item ERROR
+
+The result code $ERROR is equal to C<500> and is used by the Citadel server to
+indicate that the requested operation failed. The second and third digits of
+the error code and/or the error message following it describes why.
+
+=cut
+
+Readonly our $ERROR => 500;
+
+
+=item BINARY_FOLLOWS
+
+The result code $BINARY_FOLLOWS is equal to C<600> and is used by the Citadel server to
+indicate that after this line, read C<n> bytes. (<Cn> follows after a blank)
+
+=cut
+
+Readonly our $BINARY_FOLLOWS => 600;
+
+=item SEND_BINARY
+
+The result code $SEND_BINARY is equal to C<700> and is used by the Citadel server to
+indicate that C<n> bytes of binary data can now be sent. (C<n> follows after a blank.
+
+=cut
+
+Readonly our $SEND_BINARY => 700;
+
+=item START_CHAT_MODE
+
+The result code $START_CHAT_MODE is equal to C<800> and is used by the Citadel
+server to indicate that the system is in chat mode now. Every line sent will be
+broadcasted.
+
+=cut
+
+Readonly our $START_CHAT_MODE => 800;
+
+=item ASYNC_MSG
+
+The result code $ASYC_MSG is equal to C<900> and is used by the Citadel
+server to indicate that there is a page waiting that needs to be fetched.
+
+=back
+
+=cut
+
+Readonly our $ASYNC_MSG => 900;
+
+=head2 Room Access
+
+=over 4
+
+=item PUBLIC
+
+The room access code $PUBLIC is equal to C<0> and is used to indicate that a
+room is to have public access.
+
+=cut
+
+Readonly our $PUBLIC => 0;
+
+=item PRIVATE
+
+The room access code $PRIVATE is equal to C<1> and is used to indicate that a
+room is to have private access.
+
+=cut
+
+Readonly our $PRIVATE => 1;
+
+=item PRIVATE_PASSWORD
+
+The room access code $PRIVATE_PASSWORD is equal to C<2> and is used to indicate
+that a room is to have private access using a password.
+
+=cut
+
+Readonly our $PRIVATE_PASSWORD => 2;
+
+=item PRIVATE_INVITATION
+
+The room access code $PRIVATE_INVITATION is equal to C<3> and is used to indicate
+that a room is to have private access by invitation.
+
+=cut
+
+Readonly our $PRIVATE_INVITATION => 3;
+
+=item PERSONAL
+
+The room access code $PERSONAL is equal to C<4> and is used to indicate
+that a room is to be a private mailbox only for a particular user.
+
+=back
+
+=cut
+
+Readonly our $PERSONAL => 4;
+
+=head2 User related
+
+=over 4
+
+=item DELETED_USER
+
+The room access code $DELETED_USER is equal to C<0>.
+
+=cut
+
+Readonly our $DELETED_USER => 0;
+
+=item NEW_USER
+
+The User related constant $NEW_USER is equal to C<1>.
+
+=cut
+
+Readonly our $NEW_USER => 1;
+
+=item PROBLEM_USER
+
+The User related constant $PROBLEM_USER is equal to C<2>.
+
+=cut
+
+Readonly our $PROBLEM_USER => 2;
+
+=item LOCAL_USER
+
+The User related constant $LOCAL_USER is equal to C<3>.
+
+=cut
+
+Readonly our $LOCAL_USER => 3;
+
+=item NETWORK_USER
+
+The User related constant $NETWORK_USER is equal to C<4>.
+
+=cut
+
+Readonly our $NETWORK_USER => 4;
+
+=item PREFERRED_USER
+
+The User related constant $PREFERRED_USER is equal to C<5>.
+
+=cut
+
+Readonly our $PREFERRED_USER => 5;
+
+=item AIDE_USER
+
+The User related constant $AIDE user is equal to C<6>.
+
+=back
+
+=cut
+
+Readonly our $AIDE => 6;
 
 =pod
 
@@ -155,6 +342,8 @@ sub login {
 
     print $s "PASS $pwd\n";
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
+
+    return 1;
 }
 
 =pod
@@ -173,6 +362,8 @@ sub logout {
 
     print $s "LOUT\n";
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
+
+    return 1;
 }
 
 =pod
@@ -232,6 +423,7 @@ sub assert_floor {
     <$s> =~ /(\d).. (.*)/ and ($1 == 1 or $1 == 2 or $2 =~ /already exists/ or croak $2);
 #CFLR XXX|1
 #550 This command requires Aide access.
+    return 1;
 }
 
 =pod
@@ -262,6 +454,7 @@ sub retract_floor {
 	    return;
 	}
     }
+    return 1;
 }
 
 =pod
@@ -344,7 +537,7 @@ sub assert_room {
 
     my $name  = shift;
     my $attrs = shift;
-    $attrs->{access}       ||= PUBLIC;
+    $attrs->{access}       ||= $PUBLIC;
     $attrs->{password}     ||= '';
     $attrs->{default_view} ||= '';
 
@@ -358,6 +551,8 @@ sub assert_room {
 		   $attrs->{default_view}.'|'.
 		   "\n";
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or $2 =~ /already exists/ or croak $2);
+
+    return 1;
 }
 
 #CRE8 1|Bumsti|0||0|||
@@ -385,6 +580,7 @@ sub retract_room {
 #KILL 1
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 'Bumsti' deleted.
+    return 1;
 }
 
 =pod
@@ -413,17 +609,8 @@ sub create_user {
 #CREU RobertBarta|xxx
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 User 'RobertBarta' created and password set.
+    return 1;
 }
-
-use constant {
-    DELETED_USER   => 0,
-    NEW_USER       => 1,
-    PROBLEM_USER   => 2,
-    LOCAL_USER     => 3,
-    NETWORK_USER   => 4,
-    PREFERRED_USER => 5,
-    AIDE           => 6
-};
 
 =pod
 
@@ -462,6 +649,8 @@ sub change_user {
 
     print $s "ASUP ".(join "|", @user{ @attrs })."\n";
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
+
+    return 1;
 }
 
 =pod
@@ -488,10 +677,12 @@ sub remove_user {
     my @attrs = ('name', 'password', 'flags', 'times_called', 'messages_posted', 'access_level', 'user_number', 'timestamp', 'purge_time');
     @user{ @attrs } = split /\|/, $2;
 
-    $user{access_level} = DELETED_USER;
+    $user{access_level} = $DELETED_USER;
 
     print $s "ASUP ".(join "|", @user{ @attrs })."\n";
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
+
+    return 1;
 }
 
 =pod

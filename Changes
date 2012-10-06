@@ -1,5 +1,29 @@
 Revision history for Perl extension Net::Citadel.
 
+0.15    08:05  6 October 2012
+  - Correct the definition of the constant BINARY_FOLLOWS.
+  - Add a LICENSE line to the WriteMakefile configuration in Makefile.PL
+  - Correct usage of the DELETE_USER constant in the remove_user function.
+
+0.14    06:47  6 October 2012
+  - Have the following functions explicitly return true to indicate success:
+    login, logout, assert_floor, retract_floor, assert_room, retract_room,
+    create_user, change_user, and remove_user.
+
+0.13    15:59  5 October 2012
+  - Change to use the Readonly module for the User related constants: NEW_USER,
+    DELETED_USER, PROBLEM_USER, LOCAL_USER, NETWORK_USER, PREFERRED_USER, AIDE.
+
+0.12    14:44  5 October 2012
+  - Change to use the Readonly module for the Room Access constants: PUBLIC,
+    PRIVATE, PRIVATE_PASSWORD, PRIVATE_INVITATION, and PERSONAL.
+
+0.11    12:53  5 October 2012
+  - Add a ReadOnly constant for the ASYNC_MSG result code.
+  - Change to use the Readonly module for the Result Codes constants: CIT_OK,
+    LISTING_FOLLOWS, MORE_DATA, SEND_LISTING, BINARY_FOLLOWS, SEND_BINARY,
+    ERROR, and START_CHAT_MODE.
+
 0.10    17:54 23 September 2012
   - Rename 'echo' function in Citadel.pm to 'citadel_echo'.
   - Add an explicit 'return' line to the citadel_echo function.
