@@ -454,6 +454,7 @@ sub retract_floor {
 	    return;
 	}
     }
+    return 1;
 }
 
 =pod
