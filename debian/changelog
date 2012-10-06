@@ -1,5 +1,10 @@
 libnet-citadel-perl (0.15-1) UNRELEASED; urgency=low
 
+  TODO:
+  - Investigate FTBFS when using git-buildpackage:
+  dpkg-source: info: building libnet-citadel-perl using existing ./libnet-citadel-perl_0.15.orig.tar.gz
+  dpkg-source: info: local changes detected, the modified files are:
+   libnet-citadel-perl-0.15/META.yml
   * New upstream release.
   * Updated the Standards-Version to 3.9.4 in debian/control.
   * Changes to debian/copyright:
@@ -11,7 +16,7 @@ libnet-citadel-perl (0.15-1) UNRELEASED; urgency=low
     - Correct the Format line in the header stanza to indicate version v1.0.
   * Remove debian/patches/echo-function-doc.patch as it is no longer needed.
 
- -- Robert James Clay <jame@rocasa.us>  Sat, 06 Oct 2012 08:33:26 -0400
+ -- Robert James Clay <jame@rocasa.us>  Sat, 06 Oct 2012 09:13:26 -0400
 
 libnet-citadel-perl (0.02-1) unstable; urgency=low
 
