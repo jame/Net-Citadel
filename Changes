@@ -1,7 +1,9 @@
 Revision history for Perl extension Net::Citadel.
 
-0.15    hh:mm  6 October 2012
-  - Start v0.15 development
+0.15    08:05  6 October 2012
+  - Correct the definition of the constant BINARY_FOLLOWS.
+  - Add a LICENSE line to the WriteMakefile configuration in Makefile.PL
+  - Correct usage of the DELETE_USER constant in the remove_user function.
 
 0.14    06:47  6 October 2012
   - Have the following functions explicitly return true to indicate success:
