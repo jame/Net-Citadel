@@ -537,7 +537,7 @@ sub assert_room {
 
     my $name  = shift;
     my $attrs = shift;
-    $attrs->{access}       ||= PUBLIC;
+    $attrs->{access}       ||= $PUBLIC;
     $attrs->{password}     ||= '';
     $attrs->{default_view} ||= '';
 
