@@ -677,7 +677,7 @@ sub remove_user {
     my @attrs = ('name', 'password', 'flags', 'times_called', 'messages_posted', 'access_level', 'user_number', 'timestamp', 'purge_time');
     @user{ @attrs } = split /\|/, $2;
 
-    $user{access_level} = DELETED_USER;
+    $user{access_level} = $DELETED_USER;
 
     print $s "ASUP ".(join "|", @user{ @attrs })."\n";
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
