@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::Citadel.
 
+0.15    hh:mm  6 October 2012
+  - Start v0.15 development
+
 0.14    06:47  6 October 2012
   - Have the following functions explicitly return true to indicate success:
     login, logout, assert_floor, retract_floor, assert_room, retract_room,
