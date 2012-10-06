@@ -580,6 +580,8 @@ sub retract_room {
 #KILL 1
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 'Bumsti' deleted.
+
+    return 1;
 }
 
 =pod
