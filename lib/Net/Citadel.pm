@@ -342,6 +342,8 @@ sub login {
 
     print $s "PASS $pwd\n";
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
+
+    return 1;
 }
 
 =pod
