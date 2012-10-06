@@ -131,7 +131,7 @@ indicate that after this line, read C<n> bytes. (<Cn> follows after a blank)
 
 =cut
 
-BINARY_FOLLOWS => 600;
+Readonly our $BINARY_FOLLOWS => 600;
 
 =item SEND_BINARY
 
