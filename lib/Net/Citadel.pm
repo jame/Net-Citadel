@@ -362,6 +362,8 @@ sub logout {
 
     print $s "LOUT\n";
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
+
+    return 1;
 }
 
 =pod
