@@ -551,6 +551,8 @@ sub assert_room {
 		   $attrs->{default_view}.'|'.
 		   "\n";
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or $2 =~ /already exists/ or croak $2);
+
+    return 1;
 }
 
 #CRE8 1|Bumsti|0||0|||
