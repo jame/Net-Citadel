@@ -423,6 +423,7 @@ sub assert_floor {
     <$s> =~ /(\d).. (.*)/ and ($1 == 1 or $1 == 2 or $2 =~ /already exists/ or croak $2);
 #CFLR XXX|1
 #550 This command requires Aide access.
+    return 1;
 }
 
 =pod
