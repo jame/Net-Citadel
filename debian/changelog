@@ -1,13 +1,5 @@
-libnet-citadel-perl (0.10-1) UNRELEASED; urgency=low
+libnet-citadel-perl (0.15-1) UNRELEASED; urgency=low
 
-  TODO:
-  - Investigate FTBFS:
-  dpkg-source: info: building libnet-citadel-perl using existing ./libnet-citadel-perl_0.10.orig.tar.gz
-  dpkg-source: info: local changes detected, the modified files are:
-   libnet-citadel-perl-0.10/META.yml
-  - Issue is apparently only with builds using git-buildpackage. The version v0.10
-    pristine-tar data is already public so may resolve the issue with the  next
-    upstream version.
   * New upstream release.
   * Updated the Standards-Version to 3.9.4 in debian/control.
   * Changes to debian/copyright:
@@ -19,7 +11,7 @@ libnet-citadel-perl (0.10-1) UNRELEASED; urgency=low
     - Correct the Format line in the header stanza to indicate version v1.0.
   * Remove debian/patches/echo-function-doc.patch as it is no longer needed.
 
- -- Robert James Clay <jame@rocasa.us>  Fri, 05 Oct 2012 10:26:54 -0400
+ -- Robert James Clay <jame@rocasa.us>  Sat, 06 Oct 2012 08:33:26 -0400
 
 libnet-citadel-perl (0.02-1) unstable; urgency=low
 
