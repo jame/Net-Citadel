@@ -21,11 +21,11 @@ Net::Citadel - Citadel.org protocol coverage
 
 =head1 VERSION
 
-Version 0.13
+Version 0.14
 
 =cut
 
-our $VERSION = '0.13';
+our $VERSION = '0.14';
 
 =head1 SYNOPSIS
 
@@ -342,6 +342,8 @@ sub login {
 
     print $s "PASS $pwd\n";
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
+
+    return 1;
 }
 
 =pod
@@ -360,6 +362,8 @@ sub logout {
 
     print $s "LOUT\n";
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
+
+    return 1;
 }
 
 =pod
@@ -419,6 +423,7 @@ sub assert_floor {
     <$s> =~ /(\d).. (.*)/ and ($1 == 1 or $1 == 2 or $2 =~ /already exists/ or croak $2);
 #CFLR XXX|1
 #550 This command requires Aide access.
+    return 1;
 }
 
 =pod
@@ -449,6 +454,7 @@ sub retract_floor {
 	    return;
 	}
     }
+    return 1;
 }
 
 =pod
@@ -545,6 +551,8 @@ sub assert_room {
 		   $attrs->{default_view}.'|'.
 		   "\n";
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or $2 =~ /already exists/ or croak $2);
+
+    return 1;
 }
 
 #CRE8 1|Bumsti|0||0|||
@@ -572,6 +580,7 @@ sub retract_room {
 #KILL 1
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 'Bumsti' deleted.
+    return 1;
 }
 
 =pod
@@ -600,6 +609,7 @@ sub create_user {
 #CREU RobertBarta|xxx
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 User 'RobertBarta' created and password set.
+    return 1;
 }
 
 =pod
@@ -639,6 +649,8 @@ sub change_user {
 
     print $s "ASUP ".(join "|", @user{ @attrs })."\n";
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
+
+    return 1;
 }
 
 =pod
@@ -669,6 +681,8 @@ sub remove_user {
 
     print $s "ASUP ".(join "|", @user{ @attrs })."\n";
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
+
+    return 1;
 }
 
 =pod
