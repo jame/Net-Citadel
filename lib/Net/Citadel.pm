@@ -580,7 +580,6 @@ sub retract_room {
 #KILL 1
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 'Bumsti' deleted.
-
     return 1;
 }
 
@@ -610,6 +609,7 @@ sub create_user {
 #CREU RobertBarta|xxx
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
 #200 User 'RobertBarta' created and password set.
+    return 1;
 }
 
 =pod
