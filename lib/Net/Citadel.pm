@@ -312,9 +312,9 @@ sub new {
     $self->{port} ||= $CITADEL_PORT;
     use IO::Socket::INET;
     $self->{socket} = IO::Socket::INET->new (PeerAddr => $self->{host},
-					     PeerPort => $self->{port},
-					     Proto    => 'tcp',
-					     Type     => SOCK_STREAM) or croak "cannot connect to $self->{host}:$self->{port} ($@)";
+                                             PeerPort => $self->{port},
+                                             Proto    => 'tcp',
+                                             Type     => SOCK_STREAM) or croak "cannot connect to $self->{host}:$self->{port} ($@)";
     my $s = $self->{socket}; <$s>; # consume banner
     return $self;
 }
