@@ -25,7 +25,7 @@ sub depend {
     return <<MAKE
 
 inject:
-	mcpani --add --module Net::Citadel --authorid DRRHO --modversion \$(VERSION) --file Net-Citadel-\$(VERSION).tar.gz
+	mcpani --add --module Net::Citadel --authorid JAME --modversion \$(VERSION) --file Net-Citadel-\$(VERSION).tar.gz
 	sudo mcpani --inject
 
 debian:
