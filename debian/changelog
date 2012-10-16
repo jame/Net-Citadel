@@ -1,4 +1,11 @@
-libnet-citadel-perl (0.16-1) unstable; urgency=low
+libnet-citadel-perl (0.16-1) UNRELEASED; urgency=low
+
+  TODO:
+  - packages doesn't build; error in test due to missing build dependency:
+    "Error:  Can't locate Readonly.pm in @INC"
+    probably also missing in Depends
+    (haven't look further besides trying to see if our META.yml-stops-build
+    problem is fixed which it is :))
 
   * New upstream release.
   * Updated the Standards-Version to 3.9.4 in debian/control.
