@@ -282,18 +282,22 @@ Readonly our $AIDE => 6;
 
 =head2 Constructor
 
-The constructor creates a handle to the citadel server (and creates the TCP connection). It expects
-the following named parameters:
+C<$c = new Net::Citadel (host => $ctdl_host)>
+
+The constructor creates a handle to the citadel server (and creates the TCP
+connection). It uses the following named parameters:
 
 =over
 
 =item I<host> (default: C<localhost>)
 
-The hostname (or IP address) where the citadel server is running on. Defaults to C<localhost>.
+The hostname (or IP address) where the citadel server is running. Defaults
+to C<localhost>.
 
 =item I<port> (default: C<$CITADEL_PORT>)
 
-The port there.
+The port where the citadel server is running. Defaults to the standard Citadel
+port number C<504>.
 
 =back
 
