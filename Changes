@@ -1,5 +1,9 @@
 Revision history for Perl extension Net::Citadel.
 
+0.16    15:31 16 October 2012
+  - Correct the mcpani authorid used in Makefile.PL from DRRHO to JAME.
+  - Tab/whitespace cleanup and update the documentation for the 'new' function.
+
 0.15    08:05  6 October 2012
   - Correct the definition of the constant BINARY_FOLLOWS.
   - Add a LICENSE line to the WriteMakefile configuration in Makefile.PL

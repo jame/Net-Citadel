@@ -21,11 +21,11 @@ Net::Citadel - Citadel.org protocol coverage
 
 =head1 VERSION
 
-Version 0.15
+Version 0.16
 
 =cut
 
-our $VERSION = '0.15';
+our $VERSION = '0.16';
 
 =head1 SYNOPSIS
 
@@ -282,18 +282,22 @@ Readonly our $AIDE => 6;
 
 =head2 Constructor
 
-The constructor creates a handle to the citadel server (and creates the TCP connection). It expects
-the following named parameters:
+C<$c = new Net::Citadel (host => $ctdl_host)>
+
+The constructor creates a handle to the citadel server (and creates the TCP
+connection). It uses the following named parameters:
 
 =over
 
 =item I<host> (default: C<localhost>)
 
-The hostname (or IP address) where the citadel server is running on. Defaults to C<localhost>.
+The hostname (or IP address) where the citadel server is running. Defaults
+to C<localhost>.
 
 =item I<port> (default: C<$CITADEL_PORT>)
 
-The port there.
+The port where the citadel server is running. Defaults to the standard Citadel
+port number C<504>.
 
 =back
 
@@ -308,9 +312,9 @@ sub new {
     $self->{port} ||= $CITADEL_PORT;
     use IO::Socket::INET;
     $self->{socket} = IO::Socket::INET->new (PeerAddr => $self->{host},
-					     PeerPort => $self->{port},
-					     Proto    => 'tcp',
-					     Type     => SOCK_STREAM) or croak "cannot connect to $self->{host}:$self->{port} ($@)";
+                                             PeerPort => $self->{port},
+                                             Proto    => 'tcp',
+                                             Type     => SOCK_STREAM) or croak "cannot connect to $self->{host}:$self->{port} ($@)";
     my $s = $self->{socket}; <$s>; # consume banner
     return $self;
 }
