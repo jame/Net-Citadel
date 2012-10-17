@@ -12,7 +12,7 @@ Homepage: http://search.cpan.org/dist/Net-Citadel/
 
 Package: libnet-citadel-perl
 Architecture: all
-Depends: ${misc:Depends}, ${perl:Depends}
+Depends: ${misc:Depends}, ${perl:Depends}, libreadonly-perl
 Description: Citadel.org protocol coverage
  Citadel is a "turnkey open-source solution for email and collaboration".
  The main component is the Citadel server. To communicate with it you can
