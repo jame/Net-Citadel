@@ -4,7 +4,7 @@ Priority: optional
 Maintainer: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
 Uploaders: Robert James Clay <jame@rocasa.us>
 Build-Depends: debhelper (>= 8)
-Build-Depends-Indep: perl, libtest-pod-perl, libconfig-yaml-perl
+Build-Depends-Indep: perl, libreadonly-perl, libtest-pod-perl, libconfig-yaml-perl
 Standards-Version: 3.9.4
 Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-perl/packages/libnet-citadel-perl.git
 Vcs-Git: git://git.debian.org/pkg-perl/packages/libnet-citadel-perl.git
@@ -12,7 +12,7 @@ Homepage: http://search.cpan.org/dist/Net-Citadel/
 
 Package: libnet-citadel-perl
 Architecture: all
-Depends: ${misc:Depends}, ${perl:Depends}
+Depends: ${misc:Depends}, ${perl:Depends}, libreadonly-perl
 Description: Citadel.org protocol coverage
  Citadel is a "turnkey open-source solution for email and collaboration".
  The main component is the Citadel server. To communicate with it you can

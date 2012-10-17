@@ -1,24 +1,19 @@
-libnet-citadel-perl (0.16-1) UNRELEASED; urgency=low
-
-  TODO:
-  - packages doesn't build; error in test due to missing build dependency:
-    "Error:  Can't locate Readonly.pm in @INC"
-    probably also missing in Depends
-    (haven't look further besides trying to see if our META.yml-stops-build
-    problem is fixed which it is :))
+libnet-citadel-perl (0.16-1) unstable; urgency=low
 
   * New upstream release.
-  * Updated the Standards-Version to 3.9.4 in debian/control.
+  * Changes to debian/control:
+    - Updated the Standards-Version to 3.9.4.
+    - Include libreadonly-perl as a Depends and as a Build-Depends.
   * Changes to debian/copyright:
     - Update the copyright years for the debian/* files.
     - Correct 'Name' as 'Upstream-Name' in the header stanza.
     - Update the listed copyright holders in the 'Files: *' section.
     - Add a separate stanza for the new lib/Net/Citadel/ToDo.pod file.
-    - Update 'Maintainer' as 'Upstream-Contact' and update who that is.
+    - Correct 'Maintainer' as 'Upstream-Contact' and update who that is.
     - Correct the Format line in the header stanza to indicate version v1.0.
   * Remove debian/patches/echo-function-doc.patch as it is no longer needed.
 
- -- Robert James Clay <jame@rocasa.us>  Tue, 16 Oct 2012 18:32:49 -0400
+ -- Robert James Clay <jame@rocasa.us>  Wed, 17 Oct 2012 09:45:34 -0400
 
 libnet-citadel-perl (0.02-1) unstable; urgency=low
 
