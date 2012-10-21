@@ -717,6 +717,35 @@ sub citadel_echo {
     return 1;
 }
 
+=item I<citadel_info>
+
+$ctdl_inforef = I<$c>->citadel_info()
+
+Sends an INFO command to the Citadel server and returns the lines it receives
+from that as a reference to an array.
+
+=cut
+
+sub citadel_info {
+    my $self = shift;
+    my $msg  = shift;
+    my $s    = $self->{socket};
+    my ( @info, $line );
+
+    print $s "INFO\n";
+
+    if ((<$s>) !~ /1../) croak "Incorrect response from Citadel INFO command.";
+
+    while ($line = <$s>) {
+        if ( $line !~ /^000/ ) {
+            push @info $line;
+        }
+        else { last; }
+    }
+
+    return \@info;
+}
+
 =pod
 
 =item I<citadel_time>
