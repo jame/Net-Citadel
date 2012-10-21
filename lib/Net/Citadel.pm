@@ -756,6 +756,39 @@ sub citadel_info {
     return \@info;
 }
 
+=item I<citadel_mrtg>
+
+%mrtg_hash = I<$c>->citadel_mrtg($type)
+
+Sends the C<MRTG> command to the Citadel server. It expects a type of either
+C<users> or C<messages> to be passed to it and returns a hash containing the
+information from the server.
+
+=cut
+
+sub citadel_mrtg {
+    my $self = shift;
+    my $type = shift;
+    my $s    = $self->{socket};
+    my ( %mrtg, @mrtg_lines, $line );
+
+    print $s "MRTG $type\n";
+
+    if ((<$s>) !~ /1../) { croak "Incorrect response from Citadel MRTG command." };
+
+    # Get the listing of the MRTG information from the server.
+    while ($line = <$s>) {
+        if ( $line !~ /^000/ ) {
+            push @mrtg_lines, $line;
+        }
+        else { last; }
+    }
+
+    # Create the %mrtg hash from the information in the @mrtg_lines array
+
+    return %mrtg;
+}
+
 =pod
 
 =item I<citadel_time>
