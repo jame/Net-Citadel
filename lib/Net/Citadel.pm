@@ -764,6 +764,29 @@ Sends the C<MRTG> command to the Citadel server. It expects a type of either
 C<users> or C<messages> to be passed to it and returns a hash containing the
 information from the server.
 
+=over 4
+
+=item ActiveUsers
+Number of active users on the system.  Only returned for type C<users>.
+
+=item ConnectedUsers
+
+Number of connected users on the system.  Only returned for type C<users>.
+
+=item HighMsg
+
+Higest message number on the system.  Only returned for type C<messages>.
+
+=item SystemUptime
+
+The uptime for the system formated as days, hours, minutes.
+
+=item SystemName
+
+Human readable name of the Citadel system.
+
+=back
+
 =cut
 
 sub citadel_mrtg {
