@@ -808,7 +808,22 @@ sub citadel_mrtg {
     }
 
     # Create the %mrtg hash from the information in the @mrtg_lines array
+    if ( lc($type) = q{users} ) {
+        $mrtg = {
+            ConnectedUsers => @mrtg_lines[0],
+            ActiveUsers => @mrtg_lines[1],
+        };
+    } else {
+        $mrtg = {
+            HighMsg => @mrtg_lines[0],
+        };
+    }
+    $mrtg = {
+        SystemUptime => @mrtg_lines[2],
+        SystemName => @mrtg_lines[3],
+    };
 
+    # Return the MRTG information as the mrtg hash.
     return %mrtg;
 }
 
