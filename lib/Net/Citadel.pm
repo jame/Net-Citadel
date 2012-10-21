@@ -738,7 +738,6 @@ C<INFO> entry at L<http://www.citadel.org/doku.php/documentation:appproto:connec
 
 sub citadel_info {
     my $self = shift;
-    my $msg  = shift;
     my $s    = $self->{socket};
     my ( @info, $line );
 
