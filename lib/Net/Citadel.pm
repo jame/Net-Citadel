@@ -734,11 +734,11 @@ sub citadel_info {
 
     print $s "INFO\n";
 
-    if ((<$s>) !~ /1../) croak "Incorrect response from Citadel INFO command.";
+    if ((<$s>) !~ /1../) { croak "Incorrect response from Citadel INFO command." };
 
     while ($line = <$s>) {
         if ( $line !~ /^000/ ) {
-            push @info $line;
+            push @info, $line;
         }
         else { last; }
     }
