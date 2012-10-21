@@ -1,5 +1,8 @@
 Revision history for Perl extension Net::Citadel.
 
+0.18    18:43 21 October 2012
+  - Start v0.18 development
+
 0.17    18:12 21 October 2012
   - Add capability for the INFO commnand as the function citadel_info.
   - Add testing for the citadel_info function to the t/01citadel.t script.
