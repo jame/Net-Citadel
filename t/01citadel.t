@@ -27,11 +27,13 @@ eval {
 $c->login ($config->{account}->{username}, $config->{account}->{password});
 $c->logout and pass ('logout');
 
-
 $c->login ($config->{account}->{username}, $config->{account}->{password});
 
 $c->citadel_echo ('rrrrrr') and pass ('echo');
 $c->citadel_time and pass ('time');
+
+my $inforef = $c->citadel_info;
+is_deeply( $#{$inforef}, q{23}, "Expected 0 thru 23 information lines." );
 
 # try to get rid of any testing artefacts
 eval {

@@ -21,11 +21,11 @@ Net::Citadel - Citadel.org protocol coverage
 
 =head1 VERSION
 
-Version 0.16
+Version 0.17
 
 =cut
 
-our $VERSION = '0.16';
+our $VERSION = '0.17';
 
 =head1 SYNOPSIS
 
@@ -715,6 +715,45 @@ sub citadel_echo {
     croak "message not echoed ($msg)" unless <$s> =~ /2.. $msg/;
 
     return 1;
+}
+
+=item I<citadel_info>
+
+$info_aref = I<$c>->citadel_info()
+
+Sends the C<INFO> command to the Citadel server and returns the lines it receives
+from that as a reference to an array. An example of getting and then displaying the
+server information lines the following:
+
+ my $c = new Net::Citadel (host => $host_name);
+ my $info_aref = $c->citadel_info;
+ foreach $line (@{$info_aref}) {
+    print $line;
+ }
+
+For more details about the server information lines that are returned, see the
+C<INFO> entry at L<http://www.citadel.org/doku.php/documentation:appproto:connection>.
+
+=cut
+
+sub citadel_info {
+    my $self = shift;
+    my $msg  = shift;
+    my $s    = $self->{socket};
+    my ( @info, $line );
+
+    print $s "INFO\n";
+
+    if ((<$s>) !~ /1../) { croak "Incorrect response from Citadel INFO command." };
+
+    while ($line = <$s>) {
+        if ( $line !~ /^000/ ) {
+            push @info, $line;
+        }
+        else { last; }
+    }
+
+    return \@info;
 }
 
 =pod
