@@ -1,7 +1,8 @@
 Revision history for Perl extension Net::Citadel.
 
-0.17    12:14 21 October 2012
-  - Start v0.17 development.
+0.17    18:12 21 October 2012
+  - Add capability for the INFO commnand as the function citadel_info.
+  - Add testing for the citadel_info function to the t/01citadel.t script.
 
 0.16    15:31 16 October 2012
   - Correct the mcpani authorid used in Makefile.PL from DRRHO to JAME.
