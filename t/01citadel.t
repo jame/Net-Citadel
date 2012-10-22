@@ -35,6 +35,22 @@ $c->citadel_time and pass ('time');
 my $inforef = $c->citadel_info;
 is_deeply( $#{$inforef}, q{23}, "Expected 0 thru 23 information lines." );
 
+
+my (%mrtg_info, $key_count);
+
+%mrtg_info = $c->citadel_mrtg ('users');
+$key_count = grep { defined } values %mrtg_info;
+TODO: {
+    local $TODO ='Getting undefined when testing?';
+    is( $keycount, q{4}, 'citadel_mrtg returns 4 keys for type users.' );
+}
+%mrtg_info = $c->citadel_mrtg ('messages');
+$key_count = grep { defined } values %mrtg_info;
+TODO: {
+    local $TODO ='Getting undefined when testing?';
+    is( $keycount, q{3}, 'citadel_mrtg returns 3 keys for type messages.' );
+}
+
 # try to get rid of any testing artefacts
 eval {
     $c->retract_room ('ramsti');

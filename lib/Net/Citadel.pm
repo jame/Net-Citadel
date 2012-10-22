@@ -21,11 +21,11 @@ Net::Citadel - Citadel.org protocol coverage
 
 =head1 VERSION
 
-Version 0.17
+Version 0.18
 
 =cut
 
-our $VERSION = '0.17';
+our $VERSION = '0.18';
 
 =head1 SYNOPSIS
 
@@ -738,7 +738,6 @@ C<INFO> entry at L<http://www.citadel.org/doku.php/documentation:appproto:connec
 
 sub citadel_info {
     my $self = shift;
-    my $msg  = shift;
     my $s    = $self->{socket};
     my ( @info, $line );
 
@@ -754,6 +753,71 @@ sub citadel_info {
     }
 
     return \@info;
+}
+
+=item I<citadel_mrtg>
+
+%mrtg_hash = I<$c>->citadel_mrtg($type)
+
+Sends the C<MRTG> command to the Citadel server. It expects a type of either
+C<users> or C<messages> to be passed to it and returns a hash containing the
+information from the server.
+
+=over 4
+
+=item ActiveUsers
+Number of active users on the system.  Only returned for type C<users>.
+
+=item ConnectedUsers
+
+Number of connected users on the system.  Only returned for type C<users>.
+
+=item HighMsg
+
+Higest message number on the system.  Only returned for type C<messages>.
+
+=item SystemUptime
+
+The uptime for the system formated as days, hours, minutes.
+
+=item SystemName
+
+Human readable name of the Citadel system.
+
+=back
+
+=cut
+
+sub citadel_mrtg {
+    my $self = shift;
+    my $type = shift;
+    my $s    = $self->{socket};
+    my ( %mrtg, @mrtg_lines, $line );
+
+    print $s "MRTG $type\n";
+
+    if ((<$s>) !~ /1../) { croak "Incorrect response from Citadel MRTG command." };
+
+    # Get the listing of the MRTG information from the server.
+    while ($line = <$s>) {
+        if ( $line !~ /^000/ ) {
+            push @mrtg_lines, $line;
+        }
+        else { last; }
+    }
+
+    # Create the %mrtg hash from the information in the @mrtg_lines array
+    if ( lc($type) eq q{users} ) {
+        $mrtg{'ConnectedUsers'} = $mrtg_lines[0];
+        $mrtg{'ActiveUsers'} = $mrtg_lines[1];
+    } else {
+        $mrtg{'HighMsg'} = $mrtg_lines[0];
+    }
+    $mrtg{'SystemUptime'} = $mrtg_lines[2];
+    $mrtg{'SystemName'} = $mrtg_lines[3];
+
+    # Return the MRTG information as the mrtg hash.
+    return %mrtg;
 }
 
 =pod
