@@ -1,3 +1,9 @@
+libnet-citadel-perl (0.16-2) UNRELEASED; urgency=low
+
+  * Change Vcs-Git to canonical URI (git://anonscm.debian.org)
+
+ -- Salvatore Bonaccorso <carnil@debian.org>  Sun, 06 Jan 2013 22:04:35 +0100
+
 libnet-citadel-perl (0.16-1) unstable; urgency=low
 
   * New upstream release.
