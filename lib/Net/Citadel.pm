@@ -21,11 +21,11 @@ Net::Citadel - Citadel.org protocol coverage
 
 =head1 VERSION
 
-Version 0.18
+Version 0.19
 
 =cut
 
-our $VERSION = '0.18';
+our $VERSION = '0.19';
 
 =head1 SYNOPSIS
 
@@ -610,9 +610,9 @@ sub create_user {
     my $pwd  = shift;
     my $s    = $self->{socket};
     print $s "CREU $name|$pwd\n";
-#CREU RobertBarta|xxx
+#CREU TestUser|xxx
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
-#200 User 'RobertBarta' created and password set.
+#200 User 'TestUser' created and password set.
     return 1;
 }
 
@@ -641,9 +641,9 @@ sub change_user {
     my $s    = $self->{socket};
 
     print $s "AGUP $name\n";
-#AGUP RobertBarta
+#AGUP TestUser
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
-#200 RobertBarta|ggg|10768|1|0|4|4|1191255938|0
+#200 TestUser|ggg|10768|1|0|4|4|1191255938|0
     my %user;
     my @attrs = ('name', 'password', 'flags', 'times_called', 'messages_posted', 'access_level', 'user_number', 'timestamp', 'purge_time');
     @user{ @attrs } = split /\|/, $2;
@@ -674,9 +674,9 @@ sub remove_user {
     my $s    = $self->{socket};
 
     print $s "AGUP $name\n";
-#AGUP RobertBarta
+#AGUP TestUser
     <$s> =~ /(\d).. (.*)/ and ($1 == 2 or croak $2);
-#200 RobertBarta|ggg|10768|1|0|4|4|1191255938|0
+#200 TestUser|ggg|10768|1|0|4|4|1191255938|0
     my %user;
     my @attrs = ('name', 'password', 'flags', 'times_called', 'messages_posted', 'access_level', 'user_number', 'timestamp', 'purge_time');
     @user{ @attrs } = split /\|/, $2;
@@ -859,8 +859,8 @@ Robert James Clay, E<lt>jame@rocasa.usE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright (C) 200[78] by Robert Barta
-Copyright (C) 2012 by Robert James Clay
+Copyright (C) 2007-2008 by Robert Barta
+Copyright (C) 2012-2013 by Robert James Clay
 
 This library is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself, either Perl version 5.8.8 or,

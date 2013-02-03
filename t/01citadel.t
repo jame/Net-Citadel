@@ -115,27 +115,27 @@ eval {                                   ############# CITADEL BUG
 
 # users
 
-$c->create_user ('RobertBarta', 'xxx');
+$c->create_user ('TestUser', 'xxx');
 
 {
     my $c2 = new Net::Citadel (host => $config->{host});
-    $c2->login ('RobertBarta', 'xxx') and pass ('login new user');
+    $c2->login ('TestUser', 'xxx') and pass ('login new user');
     $c2->logout and pass ('logout new user');
 
 }
 
-$c->change_user ('RobertBarta', password => 'yyy');
+$c->change_user ('TestUser', password => 'yyy');
 {
     my $c2 = new Net::Citadel (host => $config->{host});
-    $c2->login ('RobertBarta', 'yyy') and pass ('login new password');
+    $c2->login ('TestUser', 'yyy') and pass ('login new password');
     $c2->logout and pass ('logout new password');
 }
 
-$c->remove_user ('RobertBarta');
+$c->remove_user ('TestUser');
 {
     my $c2 = new Net::Citadel (host => $config->{host});
     eval {
-	$c2->login ('RobertBarta', 'yyy');
+	$c2->login ('TestUser', 'yyy');
     }; ok ($@, 'user does not exist any more');
 }
 
