@@ -1,7 +1,8 @@
 Revision history for Perl extension Net::Citadel.
 
-0.20    hh:mm  5 June 2013
-  - Start development for version v0.20.
+0.20    10:55  5 June 2013
+  - Correct number of info lines tested for in t/01citadel.t to '24'.
+  - Add a META_MERGE repository resources item to WriteMakefile in Makefile.PL.
 
 0.19    09:17 13 February 2013
   - Correct mis-spelled words in the Changes file.
