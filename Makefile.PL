@@ -16,6 +16,11 @@ WriteMakefile(
          'Test::More' => '0',
           'Test::Pod' => '0',
     },
+    META_MERGE        => {
+            resources => {
+                repository  =>  'https://github.com/jame/Net-Citadel',
+            },
+    },
     clean             => { FILES => 'Net-Citadel-*' },
 );
 
