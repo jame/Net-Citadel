@@ -1,6 +1,8 @@
-libnet-citadel-perl (0.19-1) UNRELEASED; urgency=low
+libnet-citadel-perl (0.20-1) UNRELEASED; urgency=low
 
   [ Robert James Clay ]
+  TODO:
+    - Pending availibility of new upstream version v0.20.
   * New upstream release.
   * Update copyright year for Robert James Clay in debian/copyright.
   * Add Salvatore Bonaccorso to debian/control and debian/copyright.
@@ -9,7 +11,7 @@ libnet-citadel-perl (0.19-1) UNRELEASED; urgency=low
   * Change Vcs-Git to canonical URI (git://anonscm.debian.org)
   * Change search.cpan.org based URIs to metacpan.org based URIs
 
- -- Robert James Clay <jame@rocasa.us>  Sun, 03 Feb 2013 10:27:09 -0400
+ -- Robert James Clay <jame@rocasa.us>  Wed, 05 Jun 2013 13:17:27 -0500
 
 libnet-citadel-perl (0.16-1) unstable; urgency=low
 
