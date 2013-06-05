@@ -33,7 +33,7 @@ $c->citadel_echo ('rrrrrr') and pass ('echo');
 $c->citadel_time and pass ('time');
 
 my $inforef = $c->citadel_info;
-is_deeply( $#{$inforef}, q{23}, "Expected 0 thru 23 information lines." );
+is_deeply( $#{$inforef}, q{24}, "Expected 0 thru 23 information lines." );
 
 
 my (%mrtg_info, $key_count);
