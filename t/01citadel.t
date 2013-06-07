@@ -27,11 +27,29 @@ eval {
 $c->login ($config->{account}->{username}, $config->{account}->{password});
 $c->logout and pass ('logout');
 
-
 $c->login ($config->{account}->{username}, $config->{account}->{password});
 
 $c->citadel_echo ('rrrrrr') and pass ('echo');
 $c->citadel_time and pass ('time');
+
+my $inforef = $c->citadel_info;
+is_deeply( $#{$inforef}, q{24}, "Expected 0 thru 23 information lines." );
+
+
+my (%mrtg_info, $key_count);
+
+%mrtg_info = $c->citadel_mrtg ('users');
+$key_count = grep { defined } values %mrtg_info;
+TODO: {
+    local $TODO ='Getting undefined when testing?';
+    is( $keycount, q{4}, 'citadel_mrtg returns 4 keys for type users.' );
+}
+%mrtg_info = $c->citadel_mrtg ('messages');
+$key_count = grep { defined } values %mrtg_info;
+TODO: {
+    local $TODO ='Getting undefined when testing?';
+    is( $keycount, q{3}, 'citadel_mrtg returns 3 keys for type messages.' );
+}
 
 # try to get rid of any testing artefacts
 eval {
@@ -97,27 +115,27 @@ eval {                                   ############# CITADEL BUG
 
 # users
 
-$c->create_user ('RobertBarta', 'xxx');
+$c->create_user ('TestUser', 'xxx');
 
 {
     my $c2 = new Net::Citadel (host => $config->{host});
-    $c2->login ('RobertBarta', 'xxx') and pass ('login new user');
+    $c2->login ('TestUser', 'xxx') and pass ('login new user');
     $c2->logout and pass ('logout new user');
 
 }
 
-$c->change_user ('RobertBarta', password => 'yyy');
+$c->change_user ('TestUser', password => 'yyy');
 {
     my $c2 = new Net::Citadel (host => $config->{host});
-    $c2->login ('RobertBarta', 'yyy') and pass ('login new password');
+    $c2->login ('TestUser', 'yyy') and pass ('login new password');
     $c2->logout and pass ('logout new password');
 }
 
-$c->remove_user ('RobertBarta');
+$c->remove_user ('TestUser');
 {
     my $c2 = new Net::Citadel (host => $config->{host});
     eval {
-	$c2->login ('RobertBarta', 'yyy');
+	$c2->login ('TestUser', 'yyy');
     }; ok ($@, 'user does not exist any more');
 }
 

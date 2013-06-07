@@ -1,5 +1,23 @@
 Revision history for Perl extension Net::Citadel.
 
+0.20    10:55  5 June 2013
+  - Correct number of info lines tested for in t/01citadel.t to '24'.
+  - Add a META_MERGE repository resources item to WriteMakefile in Makefile.PL.
+
+0.19    09:17 13 February 2013
+  - Correct mis-spelled words in the Changes file.
+  - Change the name of the testing user from RobertBarta to TestUser in the
+    t/01citadel.t and lib/Net/Citadel.pm files.
+
+0.18    22:23 21 October 2012
+  - Add capability for the MRTG command as the function citadel_mrtg.
+  - Add testing for the citadel_mrtg function to the t/01citadel.t script.
+  - Remove unneeded variable assignment from the citadel_info function.
+
+0.17    18:12 21 October 2012
+  - Add capability for the INFO command as the function citadel_info.
+  - Add testing for the citadel_info function to the t/01citadel.t script.
+
 0.16    15:31 16 October 2012
   - Correct the mcpani authorid used in Makefile.PL from DRRHO to JAME.
   - Tab/whitespace cleanup and update the documentation for the 'new' function.

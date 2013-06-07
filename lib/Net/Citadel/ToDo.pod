@@ -9,15 +9,17 @@ Net::Citadel::ToDo - To Do items for the Net::Citadel Perl extension.
 
 =head2 General
 
-Add a function for the MRTG command, possibly as the function C<citadel_mrtg>.
-
-Add a function for the INFO command, possibly as the function C<citadel_info>.
-
 Add a ZIPFLAGS configuration item for dist/zipdist in Makefile.PL?
 
 Add a note in the documentation about the Net::Citadel repository and home page
 at GitHub? Also include a reference to where it is available at the C<gitpan>
 CPAN mirror at GitHub?
+
+Add capability to use SSL encrypted communications with the Citadel server,
+perhaps using IO::Socket::SSL?
+
+Change to using the jame@cpan.org address for Robert James Clay instead of the
+jame@rocasa.us address?
 
 
 =head2 Constants
@@ -54,6 +56,9 @@ http://www.citadel.org/doku.php?id=documentation:appproto:statuscodes
 There does not seem to an explicit function to close the connection; i.e., close
 the socket being used to communicate with the server.
 
+Create an internal function to handle LISTING_FOLLOWS return lines from the server?
+Perhaps called something like C<_get_listing>?
+
 =over 4
 
 =item C<assert_room> function
@@ -70,8 +75,8 @@ should be sent.)
 In the existing test code for the C<retract_floor> function, there is a comment
 saying C<CITADEL BUG>; investigate if it an issue with the function itself, an
 actual issue with Citadel, and/or just something to do with the test script.
-The documentation for the function itself refers back to Citadel v7.20, so there
-may not be any issue with it now.
+ The documentation for the function itself refers back to Citadel v7.20, so
+there may not be any issue with it now.
 
 
 =item function C<new>
@@ -105,9 +110,9 @@ to reflect the changes.
 
 =item C<citadel_echo> function
 
-It appears to test if what was sent was actually received back but only returns
-true if it doesn't fail because there is no match. Add an explicit return of
-the value returned from the ECHO command? 
+It appears to test if what was sent, was actually received back but it only
+returns true if it doesn't fail because there is no match. Add an explicit
+return of the value returned from the ECHO command? 
 
 =back
 
@@ -115,7 +120,7 @@ the value returned from the ECHO command?
 =head2 Documentation
 
 Add something like Net::Citadel::Tutorial for examples of the use and configuration
-of the module.
+of the module?
 
 
 =head2 Testing
@@ -123,14 +128,12 @@ of the module.
 Change the names of the test floors and rooms to something like C<Test Floor>
 and C<Test Room>?
 
-In the testing related to users, change to using the name TestUser.
-
 Update the testing for the C<citadel_time> function to at least check the
 number of parameters returned? Three of the parameters are Unix timestamps;
 validate those in some way? The other parameter being returned is a Boolean
 and is used to indicate Daylight Savings Time and should be a '0' or a '1'.
 
-When testing for a floor, it looks for C<Main Floor>; that exists on
+When testing for a floor, it looks for C<Main Floor>: that exists on
 a default install but may not be on an working system. Make it another
 configuration item, which if not configured would default to C<Main Floor>?
 
@@ -154,6 +157,12 @@ Debian as yet, although YAML::Tiny is.)
 Use something like Test::MockObject to do at least basic testing of the 
 various functions.  And/or Test::TCP?
 
+Testing of the citadel_info function currently just checks the number of
+information lines returned by the server. That could change over time and
+different Citadel versions. Make that a testing configuration item?
+
+Do more extensive checking of what is returned by the citadel_info function?
+
 
 =head1 SEE ALSO
 
@@ -166,7 +175,7 @@ Robert James Clay, C<< <jame at rocasa.us> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2012 Robert James Clay, all rights reserved.
+Copyright 2013 Robert James Clay, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
