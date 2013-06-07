@@ -9,7 +9,7 @@ Copyright: 2007-2008, Robert Barta, <drrho@cpan.org>
 License: Artistic or GPL-1+
 
 Files: lib/Net/Citadel/ToDo.pod
-Copyright: 2012, Robert James Clay <jame@rocasa.us>
+Copyright: 2012-2013, Robert James Clay <jame@rocasa.us>
 License: Artistic or GPL-1+
 
 Files: debian/*
