@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Net-Citadel
-version:            0.16
+version:            0.20
 abstract:           Citadel.org protocol coverage
 author:
     - Robert Barta <rho@devc.at>, Robert James Clay <jame@rocasa.us>
@@ -14,6 +14,8 @@ build_requires:
     Test::Pod:     0
 requires:
     Readonly:  0
+resources:
+    repository:  https://github.com/jame/Net-Citadel
 no_index:
     directory:
         - t
