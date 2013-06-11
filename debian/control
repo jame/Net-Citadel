@@ -2,8 +2,7 @@ Source: libnet-citadel-perl
 Section: perl
 Priority: optional
 Maintainer: Debian Perl Group <pkg-perl-maintainers@lists.alioth.debian.org>
-Uploaders: Robert James Clay <jame@rocasa.us>,
- Salvatore Bonaccorso <carnil@debian.org>
+Uploaders: Robert James Clay <jame@rocasa.us>
 Build-Depends: debhelper (>= 8)
 Build-Depends-Indep: perl, libreadonly-perl, libtest-pod-perl, libconfig-yaml-perl
 Standards-Version: 3.9.4
