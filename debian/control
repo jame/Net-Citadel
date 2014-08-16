@@ -6,7 +6,7 @@ Uploaders: Robert James Clay <jame@rocasa.us>
 Build-Depends: debhelper (>= 8)
 Build-Depends-Indep: perl, libreadonly-perl, libtest-pod-perl, libconfig-yaml-perl
 Standards-Version: 3.9.4
-Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-perl/packages/libnet-citadel-perl.git
+Vcs-Browser: https://anonscm.debian.org/cgit/pkg-perl/packages/libnet-citadel-perl.git
 Vcs-Git: git://anonscm.debian.org/pkg-perl/packages/libnet-citadel-perl.git
 Homepage: https://metacpan.org/release/Net-Citadel
 
