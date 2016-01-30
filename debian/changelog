@@ -5,6 +5,7 @@ libnet-citadel-perl (0.20-2) UNRELEASED; urgency=medium
 
   [ Salvatore Bonaccorso ]
   * Update Vcs-Browser URL to cgit web frontend
+  * debian/control: Use HTTPS transport protocol for Vcs-Git URI
 
  -- gregor herrmann <gregoa@debian.org>  Thu, 27 Feb 2014 22:38:38 +0100
 
