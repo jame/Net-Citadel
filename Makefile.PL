@@ -8,6 +8,7 @@ WriteMakefile(
     ABSTRACT_FROM     => 'lib/Net/Citadel.pm', # retrieve abstract from module
     AUTHOR            => 'Robert Barta <rho@devc.at>, Robert James Clay <jame@rocasa.us>',
     LICENSE           => 'perl',
+    MIN_PERL_VERSION  => '5.6.0',
     PREREQ_PM         => {
            'Readonly' => '0',
     },
