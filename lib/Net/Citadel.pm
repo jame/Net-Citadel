@@ -778,7 +778,7 @@ Higest message number on the system.  Only returned for type C<messages>.
 
 =item SystemUptime
 
-The uptime for the system formated as days, hours, minutes.
+The uptime for the system formatted as days, hours, minutes.
 
 =item SystemName
 
