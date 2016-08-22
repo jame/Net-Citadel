@@ -22,6 +22,7 @@ WriteMakefile(
                 repository  =>  'https://github.com/jame/Net-Citadel',
             },
     },
+    dist              => { COMPRESS => 'gzip -9f', SUFFIX => 'gz', ZIPFLAGS => '-or9',},
     clean             => { FILES => 'Net-Citadel-*' },
 );
 
