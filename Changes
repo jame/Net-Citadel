@@ -1,6 +1,12 @@
 Revision history for Perl extension Net::Citadel.
 
+0.22    18:46 22 August 2016
+  - Add line missing from the 0.21 Changes regarding the MANIFEST file.
+  - Correct spelling of 'formated' to 'formatted' in lib/Net/Citadel.pm.
+  - Add a "dist" line including a 'ZIPFLAGS' option to the Makefile.PL file.
+
 0.21    14:44 16 August 2016
+  - Add 'META.json' to the MANIFEST file.
   - Set MIN_PERL_VERSION in Makefile.PL to '5.6.0'.
 
 0.20    10:55  5 June 2013
