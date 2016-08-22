@@ -6,7 +6,6 @@ Upstream-Name: Net-Citadel
 Files: *
 Copyright: 2007-2008, Robert Barta, <drrho@cpan.org>
            2012-2013, Robert James Clay <jame@rocasa.us>
-           2014-2016, gregor herrmann <gregoa@debian.org>
 License: Artistic or GPL-1+
 
 Files: lib/Net/Citadel/ToDo.pod
@@ -16,6 +15,7 @@ License: Artistic or GPL-1+
 Files: debian/*
 Copyright: 2011-2013, Robert James Clay <jame@rocasa.us>
            2013-2016, Salvatore Bonaccorso <carnil@debian.org>
+           2014-2016, gregor herrmann <gregoa@debian.org>
 License: Artistic or GPL-1+
 
 License: Artistic
