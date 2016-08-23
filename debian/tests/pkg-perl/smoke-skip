@@ -1,0 +1,2 @@
+# looks for lib/Net/Citadel.pm
+t/00pods.t
