@@ -5,7 +5,7 @@ Upstream-Name: Net-Citadel
 
 Files: *
 Copyright: 2007-2008, Robert Barta, <drrho@cpan.org>
-           2012-2013, Robert James Clay <jame@rocasa.us>
+           2012-2016, Robert James Clay <jame@rocasa.us>
 License: Artistic or GPL-1+
 
 Files: lib/Net/Citadel/ToDo.pod
