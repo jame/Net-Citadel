@@ -1,5 +1,9 @@
 Revision history for Perl extension Net::Citadel.
 
+0.23    13:55 25 August 2016
+  - Change the default IP in t/test.yaml to be '127.0.0.1'.
+  - Add "lib/Net/Citadel/ToDo.pod" to the PODs being checked in t/00pods.t.
+
 0.22    18:46 22 August 2016
   - Add line missing from the 0.21 Changes regarding the MANIFEST file.
   - Correct spelling of 'formated' to 'formatted' in lib/Net/Citadel.pm.
