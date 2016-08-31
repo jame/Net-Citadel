@@ -21,11 +21,11 @@ Net::Citadel - Citadel.org protocol coverage
 
 =head1 VERSION
 
-Version 0.21
+Version 0.23
 
 =cut
 
-our $VERSION = '0.21';
+our $VERSION = '0.23';
 
 =head1 SYNOPSIS
 
@@ -778,7 +778,7 @@ Higest message number on the system.  Only returned for type C<messages>.
 
 =item SystemUptime
 
-The uptime for the system formated as days, hours, minutes.
+The uptime for the system formatted as days, hours, minutes.
 
 =item SystemName
 

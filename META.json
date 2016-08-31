@@ -45,6 +45,6 @@
          "url" : "https://github.com/jame/Net-Citadel"
       }
    },
-   "version" : "0.21",
+   "version" : "0.23",
    "x_serialization_backend" : "JSON::PP version 2.27300"
 }
