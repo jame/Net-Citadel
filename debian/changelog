@@ -1,11 +1,4 @@
-libnet-citadel-perl (0.21-1) UNRELEASED; urgency=medium
-
-  TODO:
-  - (minor, can be fixed upstream):
-    I: libnet-citadel-perl: spelling-error-in-manpage usr/share/man/man3/Net::Citadel.3pm.gz formated formatted
-  - (problem, forbidden by policy)
-    the build, t/01citadel.t to be precise, tries to access "the internet"
-    (well, 192.168.0.9, but still)
+libnet-citadel-perl (0.23-1) unstable; urgency=medium
 
   [ Robert James Clay ]
   * New upstream release.
@@ -24,7 +17,7 @@ libnet-citadel-perl (0.21-1) UNRELEASED; urgency=medium
   * debian/copyright: change Copyright-Format 1.0 URL to HTTPS.
   * Add debian/upstream/metadata.
 
- -- Robert James Clay <jame@rocasa.us>  Mon, 22 Aug 2016 17:26:12 -0400
+ -- Robert James Clay <jame@rocasa.us>  Wed, 31 Aug 2016 12:05:02 -0400
 
 libnet-citadel-perl (0.20-1) unstable; urgency=low
 
