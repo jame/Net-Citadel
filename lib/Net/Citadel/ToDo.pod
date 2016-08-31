@@ -9,8 +9,6 @@ Net::Citadel::ToDo - To Do items for the Net::Citadel Perl extension.
 
 =head2 General
 
-Add a ZIPFLAGS configuration item for dist/zipdist in Makefile.PL?
-
 Add a note in the documentation about the Net::Citadel repository and home page
 at GitHub? Also include a reference to where it is available at the C<gitpan>
 CPAN mirror at GitHub?
@@ -28,6 +26,19 @@ There are some numbers being used that are actually constants; change to
 using Readonly to define them for use in the code, unless there are other
 standard constants that can be used, like those for the flock operations.
 
+A "000" string constant is used quite often by Citadel but is not defined in the
+module.
+
+There is a set of follow up reply codes noted in the documentation that are not
+yet in the module.
+
+Add a link to the online documentation for the status codes:
+http://www.citadel.org/doku.php?id=documentation:appproto:statuscodes
+
+A C<NO_SUCH_USER> return code is mentioned in the command documentation (for
+the USER command, for instance,) but the module does not currently appear to
+define it.
+
 Add a paragraph to the documentation after the CONSTANTS header.
 
 Add a paragraph to the documentation after the 'Results Code' header, perhaps
@@ -36,19 +47,6 @@ including a link to the online status codes page in Citadel Documentation.
 Add a paragraph to the documentation after the 'Room Access' header, perhaps
 including a link to the online page in Citadel Documentation that refers to
 them.
-
-A "000" string constant is used quite often by Citadel but is not defined in the
-module.
-
-There is a set of follow up reply codes noted in the documentation that are not
-yet in the module.
-
-A C<NO_SUCH_USER> return code is mentioned in the command documentation (for
-the USER command, for instance,) but the module doesn't currently appear to
-define it.
-
-Add a link to the online documentation for the status codes:
-http://www.citadel.org/doku.php?id=documentation:appproto:statuscodes
 
 
 =head2 Functions
@@ -97,7 +95,7 @@ from the TIME command:  C<1347624956|-14400>.  The Citadel TIME command itself
 actually returns a line like this: C<200 1347625545|-14400|1|1347537300>,
 with the '200' being the OK code and the rest being the four fields that it
 returns (which also needs to be documented). So as currently written, the
-function doesn't return the daylight savings time indication and the actual
+function does not return the daylight savings time indication and the actual
 citadel server start information. Function first needs to be changed to at
 least return all parameters.
 
@@ -111,7 +109,7 @@ to reflect the changes.
 =item C<citadel_echo> function
 
 It appears to test if what was sent, was actually received back but it only
-returns true if it doesn't fail because there is no match. Add an explicit
+returns true if it does not fail because there is no match. Add an explicit
 return of the value returned from the ECHO command? 
 
 =back
@@ -124,6 +122,10 @@ of the module?
 
 
 =head2 Testing
+
+Will the differences with the newer Citadels justify or neccessitate checking
+the version of the Citadel being tested and doing different tests depending
+on that version?
 
 Change the names of the test floors and rooms to something like C<Test Floor>
 and C<Test Room>?
@@ -155,7 +157,7 @@ Use Config::YAML::Tiny instead of Config::YAML? (Does not appear to be in
 Debian as yet, although YAML::Tiny is.)
 
 Use something like Test::MockObject to do at least basic testing of the 
-various functions.  And/or Test::TCP?
+various functions. And/or Test::TCP?
 
 Testing of the citadel_info function currently just checks the number of
 information lines returned by the server. That could change over time and
@@ -175,7 +177,7 @@ Robert James Clay, C<< <jame at rocasa.us> >>
 
 =head1 COPYRIGHT AND LICENSE
 
-Copyright 2013 Robert James Clay, all rights reserved.
+Copyright 2016 Robert James Clay, all rights reserved.
 
 This program is free software; you can redistribute it and/or modify it
 under the same terms as Perl itself.
